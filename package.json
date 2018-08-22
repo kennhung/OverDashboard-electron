@@ -1,0 +1,26 @@
+{
+  "name": "overdashboard-electron",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Team6083/OverDashboard-electron.git"
+  },
+  "author": "KennHuang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Team6083/OverDashboard-electron/issues"
+  },
+  "homepage": "https://github.com/Team6083/OverDashboard-electron#readme",
+  "devDependencies": {
+    "electron": "^2.0.7"
+  },
+  "dependencies": {
+    "wpilib-nt-client": "^1.7.1"
+  }
+}
