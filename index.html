@@ -1,0 +1,217 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+  <title>#6083 SmartDashbaord</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row mt-2">
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-2">
+                <h5 class="mb-0">Robot: <span class="badge badge-pill badge-danger" id="com-stat">No Connection</span></h5>
+                <h5 class="mb-0">Mode: <span class="badge badge-pill badge-danger" id="mode-stat">N/A</span></h5>
+              </div>
+              <div class="col-3">
+                Event:<span class="badge badge-pill badge-info" id="event">N/A</span> Match:
+                <span class="badge badge-pill badge-info" id="match">N/A</span> Station:
+                <span class="badge badge-pill badge-info" id="station">N/A</span>
+              </div>
+              <div class="col-2">
+                MatchTime:<span class="badge badge-pill badge-info" id="mtime">N/A</span>
+              </div>
+              <div class="col-2">
+                Battery Voltage
+                <div class="progress">
+                  <div class="progress-bar bg-danger" role="progressbar" style="width: 50%" id="battV">?? V</div>
+                </div>
+              </div>
+              <div class="col">
+                <span class="badge badge-pill badge-light" id="driveReady">DriveBase</span>
+                <span class="badge badge-pill badge-light" id="upReady">UpAssembly</span>
+                <span class="badge badge-pill badge-light" id="cubeReady">SuckingAssembly</span>
+                <span class="badge badge-pill badge-light" id="climbReady">ClimbAssembly</span>
+                <span class="badge badge-pill badge-light" id="gyroReady">Gyro</span>
+                <span class="badge badge-pill badge-light" id="autoEngingReady">AutoEngine</span>
+                <span class="badge badge-pill badge-light" id="pdpReady">PDP</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-lg-2">
+        <div class="card">
+          <div class="card-body">
+            <span id="autoConfig">N/A</span>
+            <h4>
+              CurrentStep:
+              <span class="badge badge-primary" id="autoStage">N/A</span>
+            </h4>
+            <h6>Timer: <span class="badge badge-secondary" id="autoTimer">N/A</span></h6>
+
+            <h5 class="card-title">Orientation
+                <br>
+                <span class="badge badge-secondary" id="compass">??</span></h5>
+                <canvas id="compassC"></canvas>
+
+                <h6>
+                  Target Angle: <span class="badge badge-secondary" id="targetAngle">??</span>
+                </h6>
+                <h6>
+                  Error Angle: <span class="badge badge-secondary" id="errAngle">??</span>
+                </h6>
+
+
+                <h5 class="card-title">Encoder</h5>
+                <h6>LeftDrive:</h6>
+                <span class="badge badge-danger" id="lEnc">??</span>
+                <h6>RightDrive:</h6>
+                <span class="badge badge-danger" id="rEnc">??</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">
+                  Camera1
+                  <small>axis-camera1.local</small>
+                </h5>
+                <button type="button" class="btn btn-primary btn-lg" id="cam1Load">Load Cam1</button>
+                <div id="cam1"></div>
+                <h5 class="card-title">
+                  Camera2
+                  <small>axis-camera2.local</small>
+                </h5>
+                <button type="button" class="btn btn-primary btn-lg" id="cam2Load">Load Cam2</button>
+                <div id="cam2"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="#MainT" role="tab" data-toggle="tab">Main</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#PowerT" role="tab" data-toggle="tab">Power</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#SettingT" role="tab" data-toggle="tab">Setting</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <div class="tab-content">
+                  <!-- Main Tab -->
+                  <div class="tab-pane fade show active" id="MainT" role="tabpanel">
+                    <h5 class="card-title">
+                DriveBase
+                <button type="button" class="btn btn-outline-info btn-sm" data-toggle="button" id="driveRev">Drive Reverse</button>
+              </h5>
+                    <div class="row">
+                      <div class="col-6">
+                        <h5>Left: <span class="badge badge-secondary" id="speedL">??</span></h5>
+                        <canvas id="speedLCan"></canvas>
+                      </div>
+                      <div class="col-5">
+                        <h5>Right: <span class="badge badge-secondary" id="speedR">??</span></h5>
+                        <canvas id="speedRCan"></canvas>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <h5 class="card-title">
+                    UpAssembly
+                    <span class="badge badge-warning" id="upInfo"></span>
+                  </h5> Up Enc: <span class="badge badge-secondary" id="upEnc">??</span>
+                        <div class="progress">
+                          <div class="progress-bar bg-info" role="progressbar" style="width: 50%" id="upEncB"></div>
+                        </div>
+                        Up Target: <span class="badge badge-secondary" id="upTarget">??</span>
+                        <div class="progress">
+                          <div class="progress-bar bg-info" role="progressbar" style="width: 50%" id="upTargetB"></div>
+                        </div>
+                        Up Motor Out: <span class="badge badge-secondary" id="upOut">??</span>
+                        <div class="progress">
+                          <div class="progress-bar bg-info progress-bar-striped" role="progressbar" style="width: 50%" id="upOutB"></div>
+                        </div>
+                        <button type="button" class="btn btn-outline-warning btn-sm mt-1" data-toggle="button" id="upHoldOver">Holding Override</button>
+                      </div>
+                      <div class="col">
+                        <h5 class="card-title">
+                    SuckingAssembly
+                    <span class="badge badge-warning" id="suckInfo"></span>
+                  </h5> Left Claw: <span class="badge badge-secondary" id="suckC1">??</span>
+                        <div class="progress">
+                          <div class="progress-bar bg-info" role="progressbar" style="width: 50%" id="suckC1B"></div>
+                        </div>
+                        Right Claw: <span class="badge badge-secondary" id="suckC2">??</span>
+                        <div class="progress">
+                          <div class="progress-bar bg-info" role="progressbar" style="width: 50%" id="suckC2B"></div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <h5 class="card-title">
+                    ClimbAssembly
+                  </h5> Rope Motor Out: <span class="badge badge-secondary" id="climbRope">??</span>
+                        <div class="progress">
+                          <div class="progress-bar bg-info progress-bar-striped" role="progressbar" style="width: 50%" id="climbRopeB"></div>
+                        </div>
+                        Hook Motor Out: <span class="badge badge-secondary" id="climbHook">??</span>
+                        <div class="progress">
+                          <div class="progress-bar bg-info progress-bar-striped" role="progressbar" style="width: 50%" id="climbHookB"></div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <!-- Power Tab -->
+                  <div class="tab-pane fade" id="PowerT" role="tabpanel">
+
+                  </div>
+                  <!-- Setting Tab -->
+                  <div class="tab-pane fade" id="SettingT" role="tabpanel">
+                    <h5>Delay before Auto Start(sec)</h5>
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">AutoDelay(sec)</span>
+                      </div>
+                      <input type="text" class="form-control" id="autoDelay">
+                      <div class="valid-tooltip">OK</div>
+                      <div class="invalid-tooltip">Please input Number</div>
+                    </div>
+
+                    <h5>Auto Choice</h5>
+                    <select id="autoChoice"></select>
+
+                    <h5>Station</h5>
+                    <select id="autoStation"></select>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="js/renderer.js"></script>
+      <script src="networktables/networktables.js"></script>
+      <script src="networktables/camera.js"></script>
+      <script src="networktables/utils.js"></script>
+      <script src="js/ui_6083.js"></script>
+      <script src="js/nt_6083.js"></script>
+</body>
+
+</html>
