@@ -1,4 +1,9 @@
 # circle.yml
+general:
+  branches:
+    only:
+      - master # list of branches to build
+      - /feature-.*/ # or regexes
 machine: # 虛擬機的環境
   node:
     version: 9.5.0 #把剛剛得到的node version填到這裡
