@@ -5,7 +5,11 @@
   "main": "main.js",
   "scripts": {
     "test": "mocha",
-    "start": "electron ."
+    "start": "electron .",
+    "build:all": "electron-packager . --all --overwrite",
+    "build:mac": "electron-packager ./ OverObserver --platform=darwin --arch=x64 --overwrite --out ./dist",
+    "build:win64": "electron-packager ./ OverObserver --platform=win32 --arch=x64 --overwrite --out ./dist",
+    "build:win32": "electron-packager ./ OverObserver --platform=win32 --arch=ia32 --overwrite --out ./dist"
   },
   "repository": {
     "type": "git",
@@ -19,7 +23,9 @@
   "homepage": "https://github.com/Team6083/OverDashboard-electron#readme",
   "devDependencies": {
     "electron": "^2.0.8",
-    "mocha": "^5.2.0"
+    "electron-winstaller": "^2.6.4",
+    "mocha": "^5.2.0",
+    "spectron": "^3.8.0"
   },
   "dependencies": {
     "bootstrap": "^4.1.3",
