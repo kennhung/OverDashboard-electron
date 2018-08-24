@@ -6,6 +6,9 @@ const electron = require('electron');
 const wpilib_NT = require('wpilib-nt-client');
 const client = new wpilib_NT.Client();
 
+
+if(require('electron-squirrel-startup')) return;
+
 // The client will try to reconnect after 1 second
 client.setReconnectDelay(1000)
 
@@ -129,22 +132,22 @@ function startNTconnect() {
     let NtAddress = ["172.22.11.2", "10.60.83.2", "roborio-6083-frc.local", "127.0.0.1"]
 
     NtAddress.forEach(function (host) {
-        tcpp.probe(host, 1735, function(err, available) {
-            if(available){
+        tcpp.probe(host, 1735, function (err, available) {
+            if (available) {
                 console.log(host);
                 targetHost = host;
             }
         });
     });
 
-    setTimeout(function(){
-        if(targetHost == ""){
+    setTimeout(function () {
+        if (targetHost == "") {
             startNTconnect();
         }
-        else{
+        else {
             connectToNT(targetHost);
         }
-    },5000);
+    }, 5000);
 }
 
 function connectToNT(address, port) {
