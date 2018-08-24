@@ -5,7 +5,8 @@ jobs:
 #       only:
 #         - master
     working_directory: ~/mern-starter # directory where steps will run
-    machine: true
+    machine: 
+        image: circleci/classic:201708-01
     steps: # a collection of executable commands 
       - checkout # special step to check out source code to working directory
       - run:
