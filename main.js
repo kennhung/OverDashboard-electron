@@ -1,6 +1,7 @@
 'use strict';
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var tcpp = require('tcp-ping');
 const electron = require('electron');
 const wpilib_NT = require('wpilib-nt-client');
 const client = new wpilib_NT.Client();
@@ -23,6 +24,7 @@ const ipc = electron.ipcMain;
  * The Main Window of the Program
  * @type {Electron.BrowserWindow}
  * */
+
 let mainWindow;
 
 let connectedFunc,
@@ -56,7 +58,7 @@ function createWindow() {
             connectFunc();
         }
         connectedFunc = connectFunc;
-    },"localhost");
+    });
     // When the script starts running in the window set the ready variable
     ipc.on('ready', (ev, mesg) => {
         console.log('NetworkTables is ready');
@@ -70,6 +72,8 @@ function createWindow() {
 
         // Send connection message to the window if if the message is ready
         if (connectedFunc) connectedFunc();
+
+        startNTconnect();
     });
     ipc.on('add', (ev, mesg) => {
         client.Assign(mesg.val, mesg.key, (mesg.flags & 1) === 1);
@@ -118,6 +122,46 @@ function createWindow() {
         console.log('window failed load');
     });
 }
+
+var targetHost = "";
+
+function startNTconnect() {
+    let NtAddress = ["172.22.11.2", "10.60.83.2", "roborio-6083-frc.local", "127.0.0.1"]
+
+    NtAddress.forEach(function (host) {
+        tcpp.probe(host, 1735, function(err, available) {
+            if(available){
+                console.log(host);
+                targetHost = host;
+            }
+        });
+    });
+
+    setTimeout(function(){
+        if(targetHost == ""){
+            startNTconnect();
+        }
+        else{
+            connectToNT(targetHost);
+        }
+    },5000);
+}
+
+function connectToNT(address, port) {
+    console.log(`Trying to connect to ${address}` + (port ? ':' + port : ''));
+    let callback = (connected, err) => {
+        console.log('Sending status');
+        mainWindow.webContents.send('connected', connected);
+    };
+
+    if (port) {
+        client.start(callback, address, port);
+    } else {
+        client.start(callback, address);
+    }
+}
+
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 app.on('ready', () => {
