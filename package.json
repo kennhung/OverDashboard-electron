@@ -1,15 +1,18 @@
 {
   "name": "overdashboard-electron",
+  "productName": "OverDashboard",
   "version": "1.0.0",
-  "description": "",
+  "description": "Dashboard for Overlooking",
   "main": "main.js",
   "scripts": {
     "test": "mocha",
     "start": "electron .",
     "build:all": "electron-packager . --all --overwrite",
-    "build:mac": "electron-packager ./ OverObserver --platform=darwin --arch=x64 --overwrite --out ./dist",
-    "build:win64": "electron-packager ./ OverObserver --platform=win32 --arch=x64 --overwrite --out ./dist",
-    "build:win32": "electron-packager ./ OverObserver --platform=win32 --arch=ia32 --overwrite --out ./dist"
+    "build:mac": "electron-packager ./ OverDashboard --platform=darwin --arch=x64 --overwrite --out ./release-builds --version-string.CompanyName=Overlooking ",
+    "build:win64": "electron-packager ./ OverDashboard --platform=win32 --arch=x64 --overwrite --out ./release-builds --version-string.CompanyName=Overlooking --win32metadata.CompanyName=\"Overlooking 6083\"",
+    "build:win32": "electron-packager ./ OverDashboard --platform=win32 --arch=ia32 --overwrite --out ./release-builds --version-string.CompanyName=Overlooking --win32metadata.CompanyName=\"Overlooking 6083\"",
+    "setup": "node installers/windows/createinstaller_win32.js",
+    "setup:x64": "node installers/windows/createinstaller_win64.js"
   },
   "repository": {
     "type": "git",
@@ -23,8 +26,10 @@
   "homepage": "https://github.com/Team6083/OverDashboard-electron#readme",
   "devDependencies": {
     "electron": "^2.0.8",
+    "electron-packager": "^12.1.1",
     "electron-winstaller": "^2.6.4",
     "mocha": "^5.2.0",
+    "mocha-junit-reporter": "^1.18.0",
     "spectron": "^3.8.0"
   },
   "dependencies": {
@@ -33,6 +38,7 @@
     "d3": "^5.6.0",
     "jquery": "^3.3.1",
     "popper.js": "^1.12.9",
+    "tcp-ping": "^0.1.1",
     "wpilib-nt-client": "^1.7.1"
   }
 }
