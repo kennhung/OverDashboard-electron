@@ -8,9 +8,9 @@
     "test": "mocha",
     "start": "electron .",
     "build:all": "electron-packager . --all --overwrite",
-    "build:mac": "electron-packager ./ OverDashboard --platform=darwin --arch=x64 --overwrite --out ./release-builds --version-string.CompanyName=Overlooking --version-string.ProductName=OverDashboard",
-    "build:win64": "electron-packager ./ OverDashboard --platform=win32 --arch=x64 --overwrite --out ./release-builds --version-string.CompanyName=Overlooking --version-string.ProductName=OverDashboard",
-    "build:win32": "electron-packager ./ OverDashboard --platform=win32 --arch=ia32 --overwrite --out ./release-builds --version-string.CompanyName=Overlooking --version-string.ProductName=OverDashboard",
+    "build:mac": "electron-packager ./ OverDashboard --platform=darwin --arch=x64 --overwrite --out ./release-builds --version-string.CompanyName=Overlooking ",
+    "build:win64": "electron-packager ./ OverDashboard --platform=win32 --arch=x64 --overwrite --out ./release-builds --version-string.CompanyName=Overlooking --win32metadata.CompanyName=\"Overlooking 6083\"",
+    "build:win32": "electron-packager ./ OverDashboard --platform=win32 --arch=ia32 --overwrite --out ./release-builds --version-string.CompanyName=Overlooking --win32metadata.CompanyName=\"Overlooking 6083\"",
     "setup": "node installers/windows/createinstaller_win32.js",
     "setup:x64": "node installers/windows/createinstaller_win64.js"
   },
