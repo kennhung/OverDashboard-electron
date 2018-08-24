@@ -21,6 +21,8 @@ const BrowserWindow = electron.BrowserWindow;
 /** Module for receiving messages from the BrowserWindow */
 const ipc = electron.ipcMain;
 
+const globalShortcut = electron.globalShortcut
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 /**
@@ -76,7 +78,7 @@ function createWindow() {
         // Send connection message to the window if if the message is ready
         if (connectedFunc) connectedFunc();
 
-        startNTconnect();
+        
     });
     ipc.on('add', (ev, mesg) => {
         client.Assign(mesg.val, mesg.key, (mesg.flags & 1) === 1);
@@ -124,6 +126,18 @@ function createWindow() {
     mainWindow.webContents.on('did-fail-load', () => {
         console.log('window failed load');
     });
+
+    
+    globalShortcut.register('f5', function() {
+		console.log('f5 is pressed')
+		mainWindow.reload()
+	})
+	globalShortcut.register('CommandOrControl+R', function() {
+		console.log('CommandOrControl+R is pressed')
+		mainWindow.reload()
+	})
+
+    startNTconnect();
 }
 
 var targetHost = "";
