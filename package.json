@@ -30,6 +30,7 @@
     "electron-winstaller": "^2.6.4",
     "mocha": "^5.2.0",
     "mocha-junit-reporter": "^1.18.0",
+    "nyc": "^12.0.2",
     "spectron": "^3.8.0"
   },
   "dependencies": {

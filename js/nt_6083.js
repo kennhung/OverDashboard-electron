@@ -17,6 +17,12 @@ function updateCommStat() {
   updateModeStat();
 }
 
+NetworkTables.putValue("/SmartDashboard/ping", -1);
+
+NetworkTables.addKeyListener("/SmartDashboard/ping", function(key, value, isNew) {
+  $("#ptime").html(value);
+}, true);
+
 var fmsAtt = false;
 var robotMode = -1;
 
