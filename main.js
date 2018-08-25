@@ -7,7 +7,7 @@ const wpilib_NT = require('wpilib-nt-client');
 const client = new wpilib_NT.Client();
 
 
-if(require('electron-squirrel-startup')) return;
+if (require('electron-squirrel-startup')) return;
 
 // The client will try to reconnect after 1 second
 client.setReconnectDelay(1000)
@@ -39,6 +39,7 @@ let clientDataListener = (key, val, valType, mesgType, id, flags) => {
     if (val === 'true' || val === 'false') {
         val = val === 'true';
     }
+
     mainWindow.webContents.send(mesgType, {
         key,
         val,
@@ -47,6 +48,7 @@ let clientDataListener = (key, val, valType, mesgType, id, flags) => {
         flags
     });
 };
+
 function createWindow() {
     // Attempt to connect to the localhost
     client.start((con, err) => {
@@ -77,14 +79,13 @@ function createWindow() {
 
         // Send connection message to the window if if the message is ready
         if (connectedFunc) connectedFunc();
-
-        
     });
     ipc.on('add', (ev, mesg) => {
         client.Assign(mesg.val, mesg.key, (mesg.flags & 1) === 1);
     });
     ipc.on('update', (ev, mesg) => {
         client.Update(mesg.id, mesg.val);
+        console.log(mesg.id, mesg.val);
     });
     ipc.on('windowError', (ev, error) => {
         console.log(error);
@@ -127,15 +128,15 @@ function createWindow() {
         console.log('window failed load');
     });
 
-    
-    globalShortcut.register('f5', function() {
-		console.log('f5 is pressed')
-		mainWindow.reload()
-	})
-	globalShortcut.register('CommandOrControl+R', function() {
-		console.log('CommandOrControl+R is pressed')
-		mainWindow.reload()
-	})
+
+    globalShortcut.register('f5', function () {
+        console.log('f5 is pressed')
+        mainWindow.reload()
+    })
+    globalShortcut.register('CommandOrControl+R', function () {
+        console.log('CommandOrControl+R is pressed')
+        mainWindow.reload()
+    })
 
     startNTconnect();
 }
@@ -160,8 +161,21 @@ function startNTconnect() {
         }
         else {
             connectToNT(targetHost);
+            setTimeout(function(){
+                readPing();
+            },1000);
         }
     }, 5000);
+}
+
+function readPing() {
+    tcpp.ping({ address: targetHost, port: 1735}, function(err, data) {
+        client.Update(client.getKeyID("/SmartDashboard/ping"), Math.round(parseFloat(data.avg)));
+        console.log(parseFloat(data.avg));
+        setTimeout(function(){
+            readPing();
+        },5000);
+    });
 }
 
 function connectToNT(address, port) {
