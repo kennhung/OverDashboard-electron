@@ -162,6 +162,7 @@ function startNTconnect() {
         else {
             connectToNT(targetHost);
             setTimeout(function(){
+                client.Update(client.getKeyID("/SmartDashboard/NT/ip"), targetHost);
                 readPing();
             },1000);
         }
@@ -170,7 +171,7 @@ function startNTconnect() {
 
 function readPing() {
     tcpp.ping({ address: targetHost, port: 1735}, function(err, data) {
-        client.Update(client.getKeyID("/SmartDashboard/ping"), Math.round(parseFloat(data.avg)));
+        client.Update(client.getKeyID("/SmartDashboard/NT/ping"), Math.round(parseFloat(data.avg)));
         console.log(parseFloat(data.avg));
         setTimeout(function(){
             readPing();
