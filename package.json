@@ -1,7 +1,7 @@
 {
   "name": "overdashboard-electron",
   "productName": "OverDashboard",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "Dashboard for Overlooking",
   "main": "main.js",
   "scripts": {

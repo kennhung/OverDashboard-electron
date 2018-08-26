@@ -17,11 +17,16 @@ function updateCommStat() {
   updateModeStat();
 }
 
-NetworkTables.putValue("/SmartDashboard/ping", -1);
+NetworkTables.putValue("/SmartDashboard/NT/ping", -1);
+NetworkTables.putValue("/SmartDashboard/NT/ip", "noConnect");
 
-NetworkTables.addKeyListener("/SmartDashboard/ping", function(key, value, isNew) {
+NetworkTables.addKeyListener("/SmartDashboard/NT/ping", function(key, value, isNew) {
   $("#ptime").html(value);
 }, true);
+
+NetworkTables.addKeyListener("/SmartDashboard/NT/ip", function(key, value, isNew) {
+  $("#ntip").html(value);
+});
 
 var fmsAtt = false;
 var robotMode = -1;
