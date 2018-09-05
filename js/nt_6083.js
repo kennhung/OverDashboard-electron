@@ -1,11 +1,5 @@
 var RobotCom = false;
 
-NetworkTables.addRobotConnectionListener(function(connected) {
-  console.log("Robot connected: " + connected);
-  RobotCom = connected;
-  updateCommStat();
-}, true);
-
 function updateCommStat() {
   if ( RobotCom) {
     $("#com-stat").attr('class', "badge badge-success badge-pill");
@@ -17,39 +11,10 @@ function updateCommStat() {
   updateModeStat();
 }
 
-NetworkTables.putValue("/SmartDashboard/NT/ping", -1);
-NetworkTables.putValue("/SmartDashboard/NT/ip", "noConnect");
-
-NetworkTables.addKeyListener("/SmartDashboard/NT/ping", function(key, value, isNew) {
-  $("#ptime").html(value);
-}, true);
-
-NetworkTables.addKeyListener("/SmartDashboard/NT/ip", function(key, value, isNew) {
-  $("#ntip").html(value);
-});
-
-var fmsAtt = false;
-var robotMode = -1;
-
-NetworkTables.addKeyListener("/SmartDashboard/ds/isFMSAtt", function(key, value, isNew) {
-  fmsAtt = value;
-  updateModeStat();
-}, true);
-
-NetworkTables.addKeyListener("/SmartDashboard/ds/mode", function(key, value, isNew) {
-  robotMode = value;
-  updateModeStat();
-}, true);
-
-NetworkTables.addKeyListener("/SmartDashboard/ds/matchTime", function(key, value, isNew) {
-  $("#mtime").html(value);
-}, true);
-
 function updateModeStat(){
   var out = "";
   var classSet = "badge badge-pill ";
   if(RobotCom){
-    out += robotMode;
     switch (robotMode) {
       case 1:
         out = "Auto";
@@ -85,6 +50,41 @@ function updateModeStat(){
   $("#mode-stat").attr('class',classSet);
   $("#mode-stat").html(out);
 }
+
+NetworkTables.addRobotConnectionListener(function(connected) {
+  console.log("Robot connected: " + connected);
+  RobotCom = connected;
+  updateCommStat();
+}, true);
+
+NetworkTables.putValue("/SmartDashboard/NT/ping", -1);
+NetworkTables.putValue("/SmartDashboard/NT/ip", "noConnect");
+
+NetworkTables.addKeyListener("/SmartDashboard/NT/ping", function(key, value, isNew) {
+  $("#ptime").html(value);
+}, true);
+
+NetworkTables.addKeyListener("/SmartDashboard/NT/ip", function(key, value, isNew) {
+  $("#ntip").html(value);
+});
+
+var fmsAtt = false;
+var robotMode = -1;
+
+NetworkTables.addKeyListener("/SmartDashboard/ds/isFMSAtt", function(key, value, isNew) {
+  fmsAtt = value;
+  updateModeStat();
+}, true);
+
+NetworkTables.addKeyListener("/SmartDashboard/ds/mode", function(key, value, isNew) {
+  robotMode = value;
+  updateModeStat();
+}, true);
+
+NetworkTables.addKeyListener("/SmartDashboard/ds/matchTime", function(key, value, isNew) {
+  $("#mtime").html(value);
+}, true);
+
 // Connection Stat above
 //
 
@@ -142,6 +142,14 @@ NetworkTables.addKeyListener("/FMSInfo/StationNumber", function(key, value, isNe
 //
 //
 //Auto settings
+var autoPoint;
+var autoChoices;
+var delay;
+
+function updateAutoMsg(){
+  $("#autoConfig").html("do "+autoChoices+" on "+autoPoint+" delay "+delay);
+}
+
 NetworkTables.addKeyListener("/SmartDashboard/autoDelay", function(key, value, isNew) {
   $("#autoDelay").val(value);
   delay = value;
@@ -166,10 +174,6 @@ $("#autoDelay").change(function() {
 attachSelectToSendableChooser("#autoChoice","/SmartDashboard/Auto choices");
 attachSelectToSendableChooser("#autoStation","/SmartDashboard/Auto point choices");
 
-var autoPoint;
-var autoChoices;
-var delay;
-
 NetworkTables.addKeyListener("/SmartDashboard/Auto point choices/selected", function(key, value, isNew) {
   autoPoint = value;
   updateAutoMsg();
@@ -179,10 +183,6 @@ NetworkTables.addKeyListener("/SmartDashboard/Auto choices/selected", function(k
   autoChoices = value;
   updateAutoMsg();
 }, true);
-
-function updateAutoMsg(){
-  $("#autoConfig").html("do "+autoChoices+" on "+autoPoint+" delay "+delay);
-}
 
 
 //Auto mode
