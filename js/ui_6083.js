@@ -159,6 +159,18 @@ function setValtBar(id, val) {
 }
 //PDP
 
+function setOK(id) {
+  $("#" + id).attr('class', "badge badge-pill badge-success");
+}
+
+function setWarn(id) {
+  $("#" + id).attr('class', "badge badge-pill badge-warning");
+}
+
+function setErr(id) {
+  $("#" + id).attr('class', "badge badge-pill badge-danger");
+}
+
 function translateStatus(id, num) {
   switch (num) {
     case 0:
@@ -172,17 +184,5 @@ function translateStatus(id, num) {
       break;
     default:
   }
-}
-
-function setOK(id) {
-  $("#" + id).attr('class', "badge badge-pill badge-success");
-}
-
-function setWarn(id) {
-  $("#" + id).attr('class', "badge badge-pill badge-warning");
-}
-
-function setErr(id) {
-  $("#" + id).attr('class', "badge badge-pill badge-danger");
 }
 //Part Stat
