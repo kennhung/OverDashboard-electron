@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/Team6083/OverDashboard-electron.svg?style=shield)](https://circleci.com/gh/Team6083/OverDashboard-electron) [![dependencies Status](https://david-dm.org/Team6083/OverDashboard-electron/status.svg)](https://david-dm.org/Team6083/OverDashboard-electron)
+[![CircleCI](https://circleci.com/gh/Team6083/OverDashboard-electron.svg?style=shield)](https://circleci.com/gh/Team6083/OverDashboard-electron) [![dependencies Status](https://david-dm.org/Team6083/OverDashboard-electron/status.svg)](https://david-dm.org/Team6083/OverDashboard-electron) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/c5273be664f84783a5b9df733b6a38ed)](https://www.codacy.com/app/kennhung/OverDashboard-electron?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Team6083/OverDashboard-electron&amp;utm_campaign=Badge_Grade)
 # OverDashboard-electron
 Team 6083's FRC robot dashboard.
 ## Overview
