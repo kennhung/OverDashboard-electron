@@ -1,15 +1,6 @@
 var RobotCom = false;
-
-function updateCommStat() {
-  if ( RobotCom) {
-    $("#com-stat").attr('class', "badge badge-success badge-pill");
-    $("#com-stat").html("Connected");
-  } else {
-    $("#com-stat").attr('class',"badge badge-warning");
-    $("#com-stat").html("Disconnected");
-  }
-  updateModeStat();
-}
+var fmsAtt = false;
+var robotMode = -1;
 
 function updateModeStat(){
   var out = "";
@@ -51,6 +42,17 @@ function updateModeStat(){
   $("#mode-stat").html(out);
 }
 
+function updateCommStat() {
+  if ( RobotCom) {
+    $("#com-stat").attr('class', "badge badge-success badge-pill");
+    $("#com-stat").html("Connected");
+  } else {
+    $("#com-stat").attr('class',"badge badge-warning");
+    $("#com-stat").html("Disconnected");
+  }
+  updateModeStat();
+}
+
 NetworkTables.addRobotConnectionListener(function(connected) {
   console.log("Robot connected: " + connected);
   RobotCom = connected;
@@ -67,9 +69,6 @@ NetworkTables.addKeyListener("/SmartDashboard/NT/ping", function(key, value, isN
 NetworkTables.addKeyListener("/SmartDashboard/NT/ip", function(key, value, isNew) {
   $("#ntip").html(value);
 });
-
-var fmsAtt = false;
-var robotMode = -1;
 
 NetworkTables.addKeyListener("/SmartDashboard/ds/isFMSAtt", function(key, value, isNew) {
   fmsAtt = value;
