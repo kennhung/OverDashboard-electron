@@ -53,22 +53,6 @@ let clientDataListener = (key, val, valType, mesgType, id, flags) => {
 
 // Start up the BrowserWindow
 function createWindow() {
-    // Attempt to connect to the localhost
-    client.start((con, err) => {
-
-        let connectFunc = () => {
-            console.log('Sending status');
-            mainWindow.webContents.send('connected', con);
-
-            // Listens to the changes coming from the client
-        };
-
-        // If the Window is ready than send the connection status to it
-        if (ready) {
-            connectFunc();
-        }
-        connectedFunc = connectFunc;
-    });
     // When the script starts running in the window set the ready variable
     ipc.on('ready', (ev, mesg) => {
         console.log('NetworkTables is ready');
