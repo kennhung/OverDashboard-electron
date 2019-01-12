@@ -1,3 +1,4 @@
+// Using to render js files.
 
 'use strict'
 window.$ = window.jQuery = require('jquery')

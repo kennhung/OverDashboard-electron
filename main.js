@@ -35,6 +35,8 @@ let mainWindow;
 let connectedFunc,
     ready = false;
 
+
+// Foward NT values to BrowserWindow
 let clientDataListener = (key, val, valType, mesgType, id, flags) => {
     if (val === 'true' || val === 'false') {
         val = val === 'true';
@@ -49,6 +51,7 @@ let clientDataListener = (key, val, valType, mesgType, id, flags) => {
     });
 };
 
+// Start up the BrowserWindow
 function createWindow() {
     // Attempt to connect to the localhost
     client.start((con, err) => {
@@ -82,18 +85,20 @@ function createWindow() {
     });
     ipc.on('add', (ev, mesg) => {
         client.Assign(mesg.val, mesg.key, (mesg.flags & 1) === 1);
-    });
+    }); // Handle add from BrowserWindow
     ipc.on('update', (ev, mesg) => {
         client.Update(mesg.id, mesg.val);
         console.log(mesg.id, mesg.val);
-    });
+    }); // Handle update from BrowserWindow
     ipc.on('windowError', (ev, error) => {
         console.log(error);
-    });
+    }); // Handle error from BrowserWindow
+    
     // Create the browser window.
     mainWindow = new BrowserWindow({
         width: 1450,
         height: 570,
+        // The width and height of BrowserWindows
 
         show: false,
         icon: __dirname + '/../images/icon.png'
@@ -138,6 +143,7 @@ function createWindow() {
         mainWindow.reload()
     })
 
+    // Start NT connection processs
     startNTconnect();
 }
 
@@ -154,6 +160,7 @@ function startNTconnect() {
             }
         });
     });
+    // Scan ip to find roborio.
 
     setTimeout(function () {
         if (targetHost == "") {
@@ -167,6 +174,7 @@ function startNTconnect() {
             },1000);
         }
     }, 5000);
+    // Wait 5 sec before connect
 }
 
 function readPing() {
@@ -179,6 +187,7 @@ function readPing() {
     });
 }
 
+// Connect to NT with given address and port.
 function connectToNT(address, port) {
     console.log(`Trying to connect to ${address}` + (port ? ':' + port : ''));
     let callback = (connected, err) => {

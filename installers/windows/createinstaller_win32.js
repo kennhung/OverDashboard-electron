@@ -1,7 +1,9 @@
+// Create installer for win32 system.
+
 const createWindowsInstaller = require('electron-winstaller').createWindowsInstaller
 const path = require('path')
 
-function getInstallerConfig () {
+function getInstallerConfig() {
   console.log('creating windows installer')
   const rootPath = path.join('./')
   const outPath = path.join(rootPath, 'release-builds')

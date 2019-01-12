@@ -1,7 +1,10 @@
+// Read & send data from NetworkTable.
+
 var RobotCom = false;
 var fmsAtt = false;
 var robotMode = -1;
 
+// For the robot mode status in the top.
 function updateModeStat(){
   var out = "";
   var classSet = "badge badge-pill ";
@@ -42,6 +45,7 @@ function updateModeStat(){
   $("#mode-stat").html(out);
 }
 
+// For the communication status in the top.
 function updateCommStat() {
   if ( RobotCom) {
     $("#com-stat").attr('class', "badge badge-success badge-pill");
@@ -53,19 +57,23 @@ function updateCommStat() {
   updateModeStat();
 }
 
+// Update the commstatus when robot connect or disconnect.
 NetworkTables.addRobotConnectionListener(function(connected) {
   console.log("Robot connected: " + connected);
   RobotCom = connected;
   updateCommStat();
 }, true);
 
+// Init ping and ip field.
 NetworkTables.putValue("/SmartDashboard/NT/ping", -1);
 NetworkTables.putValue("/SmartDashboard/NT/ip", "noConnect");
 
+// Read robot ping.
 NetworkTables.addKeyListener("/SmartDashboard/NT/ping", function(key, value, isNew) {
   $("#ptime").html(value);
 }, true);
 
+// Read robot ip.
 NetworkTables.addKeyListener("/SmartDashboard/NT/ip", function(key, value, isNew) {
   $("#ntip").html(value);
 });
@@ -84,10 +92,10 @@ NetworkTables.addKeyListener("/SmartDashboard/ds/matchTime", function(key, value
   $("#mtime").html(value);
 }, true);
 
-// Connection Stat above
+// Connection stuff above
 //
 
-//global
+// Global listener
 NetworkTables.addGlobalListener(function(key, value, isNew) {
   if(key.split('/')[1] == "SmartDashboard" || false){
     console.log(key, " ", value);
@@ -100,7 +108,7 @@ NetworkTables.addKeyListener("/LiveWindow/Ungrouped/PowerDistributionPanel[1]/Vo
   $("#battV").html(value+" V");
 }, true);
 
-//Part Stat
+//Sub system status
 NetworkTables.addKeyListener("/SmartDashboard/drive/status", function(key, value, isNew) {
   translateStatus("driveReady",value);
 }, true);
@@ -124,7 +132,7 @@ NetworkTables.addKeyListener("/SmartDashboard/pdp/status", function(key, value, 
 }, true);
 
 
-//FMS
+// Read match data from FSM.
 NetworkTables.addKeyListener("/FMSInfo/EventName", function(key, value, isNew) {
   $("#event").html(value);
 }, true);
