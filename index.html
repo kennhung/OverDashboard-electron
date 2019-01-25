@@ -73,15 +73,20 @@
                   DriveBase
                   <button type="button" class="btn btn-outline-info btn-sm" data-toggle="button" id="driveRev">Drive
                     Reverse</button>
+                    <button type="button" class="btn btn-outline-success btn-sm ml-4" data-toggle="button" id="driveRev">Auto Target</button>
+                    <button type="button" class="btn btn-outline-success btn-sm mr-4" data-toggle="button" id="driveRev">Auto Heading</button>
+                    <button type="button" class="btn btn-outline-warning btn-sm" data-toggle="button" id="upHoldOver">Holding
+                      Override</button>
                 </h5>
+
                 <div class="row">
                   <div class="col-4">
-                    <h5>Left: <span class="badge badge-secondary mr-3" id="speedL">??</span> LeftEnc:<span class="badge badge-danger"
+                    <h5>Left: <span class="badge badge-secondary mr-2" id="speedL">??</span> LeftEnc: <span class="badge badge-danger"
                         id="lEnc">??</span></h5>
                     <canvas id="speedLCan"></canvas>
                   </div>
                   <div class="col-5">
-                    <h5>Right: <span class="badge badge-secondary mr-3" id="speedR">??</span> RightEnc:<span class="badge badge-danger"
+                    <h5>Right: <span class="badge badge-secondary mr-2" id="speedR">??</span> RightEnc: <span class="badge badge-danger"
                         id="rEnc">??</span></h5>
                     <canvas id="speedRCan"></canvas>
                   </div>
@@ -101,8 +106,7 @@
                     <div class="progress">
                       <div class="progress-bar bg-info progress-bar-striped" role="progressbar" style="width: 50%" id="upOutB"></div>
                     </div>
-                    <button type="button" class="btn btn-outline-warning btn-sm mt-1" data-toggle="button" id="upHoldOver">Holding
-                      Override</button>
+                    
                   </div>
                 </div>
                 <div class="row">
@@ -125,11 +129,11 @@
                       <div class="col">
                         <h5>
                           OutServo:
-
                         </h5>
                         <h3>
-                          <span class="badge badge-secondary align-middle">N/A</span>
+                          <span class="badge badge-secondary">N/A</span>
                         </h3>
+                        
                       </div>
                     </div>
 
