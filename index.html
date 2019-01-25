@@ -38,9 +38,9 @@
               <div class="col">
                 <span class="badge badge-pill badge-light" id="driveReady">DriveBase</span>
                 <span class="badge badge-pill badge-light" id="upReady">Up</span>
-                <span class="badge badge-pill badge-light" id="cubeReady">Shooting</span>
-                <span class="badge badge-pill badge-light" id="climbReady">HatchPanel</span>
-                <span class="badge badge-pill badge-light" id="gyroReady">SensorHub</span>
+                <span class="badge badge-pill badge-light" id="shootReady">Shooting</span>
+                <span class="badge badge-pill badge-light" id="hatchReady">HatchPanel</span>
+                <span class="badge badge-pill badge-light" id="sensorReady">SensorHub</span>
                 <span class="badge badge-pill badge-light" id="autoEngingReady">AutoEngine</span>
                 <span class="badge badge-pill badge-light" id="pdpReady">PDP</span>
               </div>
@@ -73,8 +73,8 @@
                   DriveBase
                   <button type="button" class="btn btn-outline-info btn-sm" data-toggle="button" id="driveRev">Drive
                     Reverse</button>
-                    <button type="button" class="btn btn-outline-success btn-sm ml-4" data-toggle="button" id="driveRev">Auto Target</button>
-                    <button type="button" class="btn btn-outline-success btn-sm mr-4" data-toggle="button" id="driveRev">Auto Heading</button>
+                    <button type="button" class="btn btn-outline-success btn-sm ml-4" data-toggle="button" id="autoTarget">Auto Target</button>
+                    <button type="button" class="btn btn-outline-success btn-sm mr-4" data-toggle="button" id="autoHeading">Auto Heading</button>
                     <button type="button" class="btn btn-outline-warning btn-sm" data-toggle="button" id="upHoldOver">Holding
                       Override</button>
                 </h5>
@@ -117,13 +117,13 @@
                     </h5>
                     <div class="row">
                       <div class="col">
-                        Left Claw: <span class="badge badge-secondary" id="suckC1">??</span>
+                        Left Claw: <span class="badge badge-secondary" id="shootCl">??</span>
                         <div class="progress">
-                          <div class="progress-bar bg-info" role="progressbar" style="width: 50%" id="suckC1B"></div>
+                          <div class="progress-bar bg-info" role="progressbar" style="width: 50%" id="shootClB"></div>
                         </div>
-                        Right Claw: <span class="badge badge-secondary" id="suckC2">??</span>
+                        Right Claw: <span class="badge badge-secondary" id="shootCr">??</span>
                         <div class="progress">
-                          <div class="progress-bar bg-info" role="progressbar" style="width: 50%" id="suckC2B"></div>
+                          <div class="progress-bar bg-info" role="progressbar" style="width: 50%" id="shootCrB"></div>
                         </div>
                       </div>
                       <div class="col">
@@ -131,7 +131,7 @@
                           OutServo:
                         </h5>
                         <h3>
-                          <span class="badge badge-secondary">N/A</span>
+                          <span class="badge badge-secondary" id="outServo">N/A</span>
                         </h3>
                         
                       </div>
