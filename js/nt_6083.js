@@ -287,26 +287,50 @@ NetworkTables.addKeyListener("/SmartDashboard/Right Dis", function(key, value, i
 //SuckingAssembly
 
 NetworkTables.addKeyListener("/SmartDashboard/Cube/current1", function(key, value, isNew) {
-  setAmpBar("suckC1B", value, 30);
-  $("#suckC1").html(value);
+  setAmpBar("shootClB", value, 30);
+  $("#shootCl").html(value);
 }, true);
 
 NetworkTables.addKeyListener("/SmartDashboard/Cube/current2", function(key, value, isNew) {
-  setAmpBar("suckC2B", value, 30);
-  $("#suckC2").html(value);
+  setAmpBar("shootCrB", value, 30);
+  $("#shootCr").html(value);
 }, true);
 
-//ClimbAssembly
-
-NetworkTables.addKeyListener("/SmartDashboard/Climb/ropeOut", function(key, value, isNew) {
-  setPWMBar("climbRopeB", value);
-  $("#climbRope").html(value);
+NetworkTables.addKeyListener("/SmartDashboard/shoot/OutServo",function(key, value, isNew){
+  if(value){
+    $("#outServo").html("On");
+    $("#outServo").attr("class", "badge badge-successful");
+  } else{
+    $("#OutServo").html("Off");
+    $("#OutServo").attr("class", "badge badge-danger");
+  }
 }, true);
 
-NetworkTables.addKeyListener("/SmartDashboard/Climb/HookOut", function(key, value, isNew) {
-  setPWMBar("climbHookB", value);
-  $("#climbHook").html(value);
+NetworkTables.addKeyListener("/SmartDashboard/shoot/target", function(key, value, isNew) {
+  if(value){
+    $("#autoTarget").addClass("active");
+  }
+  else{
+    $("#autoTarget").removeClass("active");
+  }
 }, true);
+$("#autoTarget").click(function(){
+  var valKey = "/SmartDashboard/shoot/target";
+  NetworkTables.putValue(valKey, !NetworkTables.getValue(valKey));
+});
+
+NetworkTables.addKeyListener("/SmartDashboard/shoot/heading", function(key, value, isNew) {
+  if(value){
+    $("#autoHeading").addClass("active");
+  }
+  else{
+    $("#autoHeading").removeClass("active");
+  }
+}, true);
+$("#autoHeading").click(function(){
+  var valKey = "/SmartDashboard/shoot/Heading";
+  NetworkTables.putValue(valKey, !NetworkTables.getValue(valKey));
+});
 
 
 
