@@ -284,7 +284,7 @@ NetworkTables.addKeyListener("/SmartDashboard/Right Dis", function(key, value, i
   $("#rEnc").html(value);
 }, true);
 
-//SuckingAssembly
+//ShootingAssembly
 
 NetworkTables.addKeyListener("/SmartDashboard/Cube/current1", function(key, value, isNew) {
   setAmpBar("shootClB", value, 30);
