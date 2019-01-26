@@ -31,6 +31,39 @@ var drivebaseOpt = {
 
 };
 
+var shooterAngleOpt = {
+  angle: -0.00, // The span of the gauge arc
+  lineWidth: 0.1, // The line thickness
+  radiusScale: 0.40, // Relative radius
+  pointer: {
+    length: 0.37, // // Relative to gauge radius
+    strokeWidth: 0.022, // The thickness
+    color: '#000000' // Fill color
+  },
+  limitMax: true, // If false, max value increases automatically if value > maxValue
+  limitMin: true, // If true, the min value of the gauge will be fixed
+  strokeColor: '#E0E0E0', // to see which ones work best for you
+  generateGradient: true,
+  highDpiSupport: true, // High resolution support
+  staticLabels: {
+    font: "20px sans-serif", // Specifies font
+    labels: [-45, 0, 45, 90, 135], // Print labels at these values
+    color: "#000000", // Optional: Label text color
+    fractionDigits: 0 // Optional: Numerical precision. 0=round off.
+  },
+  renderTicks: {
+    divisions: 4,
+    divWidth: 1.1,
+    divLength: 0.7,
+    divColor: '#333333',
+    subDivisions: 5,
+    subLength: 0.5,
+    subWidth: 0.6,
+    subColor: '#666666'
+  },
+
+};
+
 var speedL = new Gauge(document.getElementById("speedLCan")).setOptions(drivebaseOpt);
 speedL.maxValue = 1;
 speedL.setMinValue(-1);
@@ -42,6 +75,12 @@ speedR.maxValue = 1;
 speedR.setMinValue(-1);
 speedR.animationSpeed = 5;
 speedR.set(0);
+
+var shooterAngle = new Gauge(document.getElementById("shooterAngleGauge")).setOptions(shooterAngleOpt);
+shooterAngle.maxValue = 135;
+shooterAngle.setMinValue(-45);
+shooterAngle.animationSpeed = 5;
+shooterAngle.set(0);
 
 function setPWMBar(id, val) {
   var max = 1.01;
@@ -85,7 +124,7 @@ var compassOption = {
     "0",
     "45",
     "90",
-    "135",
+    "135",  
     "180",
     "-135",
     "-90",
