@@ -329,7 +329,7 @@ NetworkTables.addKeyListener("/SmartDashboard/shoot/heading", function (key, val
   }
 }, true);
 $("#autoHeading").click(function () {
-  var valKey = "/SmartDashboard/shoot/Heading";
+  var valKey = "/SmartDashboard/shoot/heading";
   NetworkTables.putValue(valKey, !NetworkTables.getValue(valKey));
 });
 
