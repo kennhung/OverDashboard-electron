@@ -333,7 +333,10 @@ $("#autoHeading").click(function () {
   NetworkTables.putValue(valKey, !NetworkTables.getValue(valKey));
 });
 
-
+NetworkTables.addKeyListener("/SmartDashboard/shoot/distToRocket", function(key, value, isNew){
+  $("#distRocket").html(value);
+  setBootstrapBar(300,0,"distRocketB",value);
+});
 
 
 

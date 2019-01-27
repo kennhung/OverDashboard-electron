@@ -100,16 +100,26 @@ function setPWMBar(id, val) {
 
 
 function setUpAssBar(id, val) {
-  var max = 0;
-  var min = -5800;
+  setBootstrapBar(0, -5800, id, val);
+  if (val > 0) {
+    $("#" + id).removeClass("bg-info").addClass("bg-warning");
+  } else {
+    $("#" + id).addClass("bg-info").removeClass("bg-warning");
+  }
+}
+
+/**
+ * Set the value of the bootstrap bar.
+ * @param max max val of the bar
+ * @param min min val of the bar
+ * @param id the id of the target
+ * @param val current value
+ */
+
+function setBootstrapBar(max, min, id, val) {
   var range = max - min;
   var perC = val / range * 100;
   $("#" + id).attr('style', "width: " + Math.abs(perC) + "%");
-  if (perC > 0) {
-    $("#" + id).attr('class', "progress-bar bg-warning");
-  } else {
-    $("#" + id).attr('class', "progress-bar bg-info");
-  }
 }
 //Up UpAssembly
 
@@ -124,7 +134,7 @@ var compassOption = {
     "0",
     "45",
     "90",
-    "135",  
+    "135",
     "180",
     "-135",
     "-90",
