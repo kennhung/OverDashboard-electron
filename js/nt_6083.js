@@ -112,13 +112,13 @@ NetworkTables.addKeyListener("/LiveWindow/Ungrouped/PowerDistributionPanel[1]/Vo
 NetworkTables.addKeyListener("/SmartDashboard/drive/status", function (key, value, isNew) {
   translateStatus("driveReady", value);
 }, true);
-NetworkTables.addKeyListener("/SmartDashboard/Up/status", function (key, value, isNew) {
+NetworkTables.addKeyListener("/SmartDashboard/up/status", function (key, value, isNew) {
   translateStatus("upReady", value);
 }, true);
-NetworkTables.addKeyListener("/SmartDashboard/Shoot/status", function (key, value, isNew) {
+NetworkTables.addKeyListener("/SmartDashboard/shoot/status", function (key, value, isNew) {
   translateStatus("shootReady", value);
 }, true);
-NetworkTables.addKeyListener("/SmartDashboard/Hatch/status", function (key, value, isNew) {
+NetworkTables.addKeyListener("/SmartDashboard/hatch/status", function (key, value, isNew) {
   translateStatus("hatchReady", value);
 }, true);
 NetworkTables.addKeyListener("/SmartDashboard/SensorHub/status", function (key, value, isNew) {
