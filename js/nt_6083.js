@@ -115,14 +115,14 @@ NetworkTables.addKeyListener("/SmartDashboard/drive/status", function (key, valu
 NetworkTables.addKeyListener("/SmartDashboard/Up/status", function (key, value, isNew) {
   translateStatus("upReady", value);
 }, true);
-NetworkTables.addKeyListener("/SmartDashboard/Cube/status", function (key, value, isNew) {
-  translateStatus("cubeReady", value);
+NetworkTables.addKeyListener("/SmartDashboard/Shoot/status", function (key, value, isNew) {
+  translateStatus("shootReady", value);
 }, true);
-NetworkTables.addKeyListener("/SmartDashboard/Climb/status", function (key, value, isNew) {
-  translateStatus("climbReady", value);
+NetworkTables.addKeyListener("/SmartDashboard/Hatch/status", function (key, value, isNew) {
+  translateStatus("hatchReady", value);
 }, true);
-NetworkTables.addKeyListener("/SmartDashboard/Gyro/status", function (key, value, isNew) {
-  translateStatus("gyroReady", value);
+NetworkTables.addKeyListener("/SmartDashboard/SensorHub/status", function (key, value, isNew) {
+  translateStatus("sensorReady", value);
 }, true);
 NetworkTables.addKeyListener("/SmartDashboard/AutoEngine/status", function (key, value, isNew) {
   translateStatus("autoEngingReady", value);
