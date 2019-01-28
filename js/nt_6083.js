@@ -239,22 +239,22 @@ $("#driveRev").click(function () {
 });
 
 //Up Ass
-NetworkTables.addKeyListener("/SmartDashboard/Up/Enc", function (key, value, isNew) {
+NetworkTables.addKeyListener("/SmartDashboard/up/Enc", function (key, value, isNew) {
   setUpAssBar("upEncB", value);
   $("#upEnc").html(value);
 }, true);
 
-NetworkTables.addKeyListener("/SmartDashboard/Up/targetStep", function (key, value, isNew) {
+NetworkTables.addKeyListener("/SmartDashboard/up/targetStep", function (key, value, isNew) {
   setUpAssBar("upTargetB", value);
   $("#upTarget").html(value);
 }, true);
 
-NetworkTables.addKeyListener("/SmartDashboard/Up/motorOutPut", function (key, value, isNew) {
+NetworkTables.addKeyListener("/SmartDashboard/up/motorOut", function (key, value, isNew) {
   setPWMBar("upOutB", value);
   $("#upOut").html(value);
 }, true);
 
-NetworkTables.addKeyListener("/SmartDashboard/Up/HoldOverride", function (key, value, isNew) {
+NetworkTables.addKeyListener("/SmartDashboard/up/HoldOverride", function (key, value, isNew) {
 
   if (value) {
     $("#upHoldOver").addClass("active");
@@ -269,14 +269,13 @@ $("#upHoldOver").click(function () {
   NetworkTables.putValue(valKey, !NetworkTables.getValue(valKey));
 });
 
-//Gyro
-NetworkTables.addKeyListener("/SmartDashboard/Gyro/angle", function (key, value, isNew) {
+//SensorHub
+NetworkTables.addKeyListener("/SmartDashboard/SensorHub/heading", function (key, value, isNew) {
   compassC.value = value;
   $("#compass").html(value);
 }, true);
 
-//Encoders
-
+//Drive Enc
 NetworkTables.addKeyListener("/SmartDashboard/Left Dis", function (key, value, isNew) {
   $("#lEnc").html(value);
 }, true);
@@ -286,13 +285,12 @@ NetworkTables.addKeyListener("/SmartDashboard/Right Dis", function (key, value, 
 }, true);
 
 //ShootingAssembly
-
-NetworkTables.addKeyListener("/SmartDashboard/Cube/current1", function (key, value, isNew) {
+NetworkTables.addKeyListener("/SmartDashboard/shoot/currentLeft", function (key, value, isNew) {
   setAmpBar("shootClB", value, 30);
   $("#shootCl").html(value);
 }, true);
 
-NetworkTables.addKeyListener("/SmartDashboard/Cube/current2", function (key, value, isNew) {
+NetworkTables.addKeyListener("/SmartDashboard/shoot/currentRight", function (key, value, isNew) {
   setAmpBar("shootCrB", value, 30);
   $("#shootCr").html(value);
 }, true);
@@ -333,10 +331,12 @@ $("#autoHeading").click(function () {
   NetworkTables.putValue(valKey, !NetworkTables.getValue(valKey));
 });
 
-NetworkTables.addKeyListener("/SmartDashboard/shoot/distToRocket", function(key, value, isNew){
+NetworkTables.addKeyListener("/SmartDashboard/shoot/disToRocket", function(key, value, isNew){
   $("#distRocket").html(value);
   setBootstrapBar(300,0,"distRocketB",value);
 });
+
+//Panel Assembly
 
 
 
