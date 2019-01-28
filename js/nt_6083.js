@@ -265,7 +265,7 @@ NetworkTables.addKeyListener("/SmartDashboard/up/HoldOverride", function (key, v
 }, true);
 
 $("#upHoldOver").click(function () {
-  var valKey = "/SmartDashboard/Up/HoldOverride";
+  var valKey = "/SmartDashboard/up/HoldOverride";
   NetworkTables.putValue(valKey, !NetworkTables.getValue(valKey));
 });
 
@@ -276,11 +276,11 @@ NetworkTables.addKeyListener("/SmartDashboard/SensorHub/heading", function (key,
 }, true);
 
 //Drive Enc
-NetworkTables.addKeyListener("/SmartDashboard/Left Dis", function (key, value, isNew) {
+NetworkTables.addKeyListener("/SmartDashboard/drive/leftDis", function (key, value, isNew) {
   $("#lEnc").html(value);
 }, true);
 
-NetworkTables.addKeyListener("/SmartDashboard/Right Dis", function (key, value, isNew) {
+NetworkTables.addKeyListener("/SmartDashboard/drive/rightDis", function (key, value, isNew) {
   $("#rEnc").html(value);
 }, true);
 
