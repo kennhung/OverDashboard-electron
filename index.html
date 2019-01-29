@@ -128,15 +128,21 @@
                   </div>
                   <div class="col-5">
                     <div style="margin-top: -90px;"><canvas width="250" id="shooterAngleGauge"></canvas></div>
-                   
+                    Target: <span class="badge badge-secondary" id="shooterAngle">N/A</span>
+                    Current: <span class="badge badge-secondary" id="shooterCurrentAngle">N/A</span>
+                    Level: <span class="badge badge-secondary" id="shooterCurrentLevel">N/A</span>
                   </div>
                   <div class="col-4">
                     <div class="mb-1">
-                      OutServo: <span class="badge badge-secondary" id="outServo">N/A</span>
+                      OutPiston: <span class="badge badge-secondary" id="outPiston">N/A</span>
                     </div>
                     Dist to rocket: <span class="badge badge-secondary" id="distRocket">??</span>
                     <div class="progress">
                       <div class="progress-bar bg-info" role="progressbar" style="width: 50%" id="distRocketB"></div>
+                    </div>
+                    Shoot Motor Out: <span class="badge badge-secondary" id="angleMotorOut">??</span>
+                    <div class="progress">
+                      <div class="progress-bar bg-info" role="progressbar" style="width: 50%" id="angleMotorOutB"></div>
                     </div>
                   </div>
                 </div>

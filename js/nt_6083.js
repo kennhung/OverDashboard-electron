@@ -239,7 +239,7 @@ $("#driveRev").click(function () {
 });
 
 //Up Ass
-NetworkTables.addKeyListener("/SmartDashboard/up/Enc", function (key, value, isNew) {
+NetworkTables.addKeyListener("/SmartDashboard/up/enc", function (key, value, isNew) {
   setUpAssBar("upEncB", value);
   $("#upEnc").html(value);
 }, true);
@@ -254,8 +254,7 @@ NetworkTables.addKeyListener("/SmartDashboard/up/motorOut", function (key, value
   $("#upOut").html(value);
 }, true);
 
-NetworkTables.addKeyListener("/SmartDashboard/up/HoldOverride", function (key, value, isNew) {
-
+NetworkTables.addKeyListener("/SmartDashboard/up/holdingOverride", function (key, value, isNew) {
   if (value) {
     $("#upHoldOver").addClass("active");
   }
@@ -265,7 +264,7 @@ NetworkTables.addKeyListener("/SmartDashboard/up/HoldOverride", function (key, v
 }, true);
 
 $("#upHoldOver").click(function () {
-  var valKey = "/SmartDashboard/up/HoldOverride";
+  var valKey = "/SmartDashboard/up/holdingOverride";
   NetworkTables.putValue(valKey, !NetworkTables.getValue(valKey));
 });
 
@@ -295,17 +294,37 @@ NetworkTables.addKeyListener("/SmartDashboard/shoot/currentRight", function (key
   $("#shootCr").html(value);
 }, true);
 
-NetworkTables.addKeyListener("/SmartDashboard/shoot/OutServo", function (key, value, isNew) {
+NetworkTables.addKeyListener("/SmartDashboard/shoot/outPiston", function (key, value, isNew) {
   if (value) {
-    $("#outServo").html("On");
-    $("#outServo").attr("class", "badge badge-successful");
+    $("#outPiston").html("On");
+    $("#outPiston").attr("class", "badge badge-successful");
   } else {
-    $("#OutServo").html("Off");
-    $("#OutServo").attr("class", "badge badge-danger");
+    $("#outPiston").html("Off");
+    $("#outPiston").attr("class", "badge badge-danger");
   }
 }, true);
 
-NetworkTables.addKeyListener("/SmartDashboard/shoot/target", function (key, value, isNew) {
+NetworkTables.addKeyListener("/SmartDashboard/shoot/target", function(key, value, isNew){
+  shooterAngle.set(value);
+  $("#shooterAngle").html(value);
+});
+
+NetworkTables.addKeyListener("/SmartDashboard/shoot/enc", function(key, value, isNew){
+  $("#shooterCurrentAngle").html(value);
+});
+
+NetworkTables.addKeyListener("/SmartDashboard/shoot/angleMotorOut", function(key, value, isNew){
+  $("#angleMotorOut").html(value);
+  setPWMBar("angleMotorOutB", value);
+});
+
+NetworkTables.addKeyListener("/SmartDashboard/shoot/currentLevel", function(key, value, isNew){
+  $("#shooterCurrentLevel").html(value);
+});
+
+// Auto shooting
+
+NetworkTables.addKeyListener("/SmartDashboard/shoot/autoTarget", function (key, value, isNew) {
   if (value) {
     $("#autoTarget").addClass("active");
   }
@@ -314,11 +333,11 @@ NetworkTables.addKeyListener("/SmartDashboard/shoot/target", function (key, valu
   }
 }, true);
 $("#autoTarget").click(function () {
-  var valKey = "/SmartDashboard/shoot/target";
+  var valKey = "/SmartDashboard/shoot/autoTarget";
   NetworkTables.putValue(valKey, !NetworkTables.getValue(valKey));
 });
 
-NetworkTables.addKeyListener("/SmartDashboard/shoot/heading", function (key, value, isNew) {
+NetworkTables.addKeyListener("/SmartDashboard/shoot/autoHeading", function (key, value, isNew) {
   if (value) {
     $("#autoHeading").addClass("active");
   }
@@ -327,14 +346,15 @@ NetworkTables.addKeyListener("/SmartDashboard/shoot/heading", function (key, val
   }
 }, true);
 $("#autoHeading").click(function () {
-  var valKey = "/SmartDashboard/shoot/heading";
+  var valKey = "/SmartDashboard/shoot/autoHeading";
   NetworkTables.putValue(valKey, !NetworkTables.getValue(valKey));
 });
 
-NetworkTables.addKeyListener("/SmartDashboard/shoot/disToRocket", function(key, value, isNew){
+NetworkTables.addKeyListener("/SmartDashboard/shoot/disToRocket", function (key, value, isNew) {
   $("#distRocket").html(value);
-  setBootstrapBar(300,0,"distRocketB",value);
+  setBootstrapBar(300, 0, "distRocketB", value);
 });
+
 
 //Panel Assembly
 
