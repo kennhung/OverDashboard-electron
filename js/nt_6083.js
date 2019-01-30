@@ -385,7 +385,7 @@ $("#cam2Load").click(function () {
     container: '#cam2',
     port: 1181,
     host: cam2URL,
-    image_url: '/?action=stream',
+    image_url: '/stream.mjpg',
     data_url: '/settings.json',
     attrs: {
       width: 320,
