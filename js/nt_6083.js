@@ -305,12 +305,12 @@ NetworkTables.addKeyListener("/SmartDashboard/shoot/outPiston", function (key, v
 }, true);
 
 NetworkTables.addKeyListener("/SmartDashboard/shoot/target", function(key, value, isNew){
-  shooterAngle.set(value);
   $("#shooterAngle").html(value);
 });
 
 NetworkTables.addKeyListener("/SmartDashboard/shoot/enc", function(key, value, isNew){
   $("#shooterCurrentAngle").html(value);
+  shooterAngle.set(value);
 });
 
 NetworkTables.addKeyListener("/SmartDashboard/shoot/angleMotorOut", function(key, value, isNew){
