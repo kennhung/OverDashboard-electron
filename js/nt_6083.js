@@ -362,7 +362,7 @@ NetworkTables.addKeyListener("/SmartDashboard/shoot/disToRocket", function (key,
 
 //Camera
 var cam1URL = "axis-camera1.local";
-var cam2URL = "axis-camera2.local";
+var cam2URL = "roborio-6083-frc.local";
 
 $("#cam1Load").click(function () {
   $(this).hide();
@@ -383,10 +383,10 @@ $("#cam2Load").click(function () {
   $(this).hide();
   loadCameraOnConnect({
     container: '#cam2',
-    port: 80,
+    port: 1181,
     host: cam2URL,
-    image_url: '/mjpg/video.mjpg',
-    data_url: '/css/common.css',
+    image_url: '/?action=stream',
+    data_url: '/settings.json',
     attrs: {
       width: 320,
       height: 240
