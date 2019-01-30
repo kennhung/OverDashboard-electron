@@ -14,7 +14,7 @@ function getInstallerConfig() {
     noMsi: true,
     outputDirectory: path.join(outPath, 'windows-installer'),
     exe: 'OverDashboard.exe',
-    setupExe: 'OverDashboard_Setup.exe'
+    setupExe: 'OverDashboard_win32_Setup.exe'
   })
 }
 
