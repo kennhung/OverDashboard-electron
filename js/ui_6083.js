@@ -192,10 +192,10 @@ function setAmpBar(id, val, safe) {
   }
 }
 
-function setONOFF(id, val){
+function setONOFF(id, value){
   if (value) {
     $("#"+id).html("On");
-    $("#"+id).attr("class", "badge badge-successful");
+    $("#"+id).attr("class", "badge badge-success");
   } else {
     $("#"+id).html("Off");
     $("#"+id).attr("class", "badge badge-danger");
