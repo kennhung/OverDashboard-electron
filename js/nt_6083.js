@@ -295,13 +295,7 @@ NetworkTables.addKeyListener("/SmartDashboard/shoot/currentRight", function (key
 }, true);
 
 NetworkTables.addKeyListener("/SmartDashboard/shoot/outPiston", function (key, value, isNew) {
-  if (value) {
-    $("#outPiston").html("On");
-    $("#outPiston").attr("class", "badge badge-successful");
-  } else {
-    $("#outPiston").html("Off");
-    $("#outPiston").attr("class", "badge badge-danger");
-  }
+  
 }, true);
 
 NetworkTables.addKeyListener("/SmartDashboard/shoot/target", function(key, value, isNew){
@@ -325,12 +319,7 @@ NetworkTables.addKeyListener("/SmartDashboard/shoot/currentLevel", function(key,
 // Auto shooting
 
 NetworkTables.addKeyListener("/SmartDashboard/shoot/autoTarget", function (key, value, isNew) {
-  if (value) {
-    $("#autoTarget").addClass("active");
-  }
-  else {
-    $("#autoTarget").removeClass("active");
-  }
+  setONOFF("autoTarget", value);
 }, true);
 $("#autoTarget").click(function () {
   var valKey = "/SmartDashboard/shoot/autoTarget";
@@ -353,11 +342,31 @@ $("#autoHeading").click(function () {
 NetworkTables.addKeyListener("/SmartDashboard/shoot/disToRocket", function (key, value, isNew) {
   $("#distRocket").html(value);
   setBootstrapBar(300, 0, "distRocketB", value);
-});
+}, true);
 
 
 //Panel Assembly
 
+
+//Pneumatic Assembly
+
+NetworkTables.addKeyListener("/SmartDashboard/pneumatic/compPower", function(key, value, isNew){
+  setONOFF("compPower", value);
+});
+
+NetworkTables.addKeyListener("/SmartDashboard/pneumatic/compCloseLoop", function (key, value, isNew) {
+  if (value) {
+    $("#compCloseLoop").addClass("active");
+  }
+  else {
+    $("#compCloseLoop").removeClass("active");
+  }
+}, true);
+
+$("#compCloseLoop").click(function () {
+  var valKey = "/SmartDashboard/pneumatic/compCloseLoop";
+  NetworkTables.putValue(valKey, !NetworkTables.getValue(valKey));
+});
 
 
 //Camera

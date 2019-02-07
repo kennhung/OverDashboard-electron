@@ -15,7 +15,8 @@
           <div class="card-body">
             <div class="row">
               <div class="col-2">
-                <h5 class="mb-0">Robot: <span class="badge badge-pill badge-danger" id="com-stat">No Connection</span></h5>
+                <h5 class="mb-0">Robot: <span class="badge badge-pill badge-danger" id="com-stat">No Connection</span>
+                </h5>
                 <h5 class="mb-0">Mode: <span class="badge badge-pill badge-danger" id="mode-stat">N/A</span></h5>
               </div>
               <div class="col-3">
@@ -62,6 +63,9 @@
                 <a class="nav-link" href="#PowerT" role="tab" data-toggle="tab">Power</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="#PneumaticT" role="tab" data-toggle="tab">Pneumatic</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="#SettingT" role="tab" data-toggle="tab">Setting</a>
               </li>
             </ul>
@@ -74,23 +78,26 @@
                   DriveBase
                   <button type="button" class="btn btn-outline-info btn-sm" data-toggle="button" id="driveRev">Drive
                     Reverse</button>
-                  <button type="button" class="btn btn-outline-success btn-sm ml-4" data-toggle="button" id="autoTarget">Auto
+                  <button type="button" class="btn btn-outline-success btn-sm ml-4" data-toggle="button"
+                    id="autoTarget">Auto
                     Target</button>
-                  <button type="button" class="btn btn-outline-success btn-sm mr-4" data-toggle="button" id="autoHeading">Auto
+                  <button type="button" class="btn btn-outline-success btn-sm mr-4" data-toggle="button"
+                    id="autoHeading">Auto
                     Heading</button>
-                  <button type="button" class="btn btn-outline-warning btn-sm" data-toggle="button" id="upHoldOver">Holding
+                  <button type="button" class="btn btn-outline-warning btn-sm" data-toggle="button"
+                    id="upHoldOver">Holding
                     Override</button>
                 </h5>
 
                 <div class="row">
                   <div class="col-4">
-                    <h5>Left: <span class="badge badge-secondary mr-2" id="speedL">??</span> LeftEnc: <span class="badge badge-danger"
-                        id="lEnc">??</span></h5>
+                    <h5>Left: <span class="badge badge-secondary mr-2" id="speedL">??</span> LeftEnc: <span
+                        class="badge badge-danger" id="lEnc">??</span></h5>
                     <canvas id="speedLCan"></canvas>
                   </div>
                   <div class="col-5">
-                    <h5>Right: <span class="badge badge-secondary mr-2" id="speedR">??</span> RightEnc: <span class="badge badge-danger"
-                        id="rEnc">??</span></h5>
+                    <h5>Right: <span class="badge badge-secondary mr-2" id="speedR">??</span> RightEnc: <span
+                        class="badge badge-danger" id="rEnc">??</span></h5>
                     <canvas id="speedRCan"></canvas>
                   </div>
                   <div class="col-3">
@@ -107,7 +114,8 @@
                     </div>
                     Up Motor Out: <span class="badge badge-secondary" id="upOut">??</span>
                     <div class="progress">
-                      <div class="progress-bar bg-info progress-bar-striped" role="progressbar" style="width: 50%" id="upOutB"></div>
+                      <div class="progress-bar bg-info progress-bar-striped" role="progressbar" style="width: 50%"
+                        id="upOutB"></div>
                     </div>
 
                   </div>
@@ -151,6 +159,17 @@
               <!-- Power Tab -->
               <div class="tab-pane fade" id="PowerT" role="tabpanel">
 
+              </div>
+              <!-- Penumatic Tab-->
+              <div class="tab-pane fade" id="PneumaticT" role="tabpanel">
+                <div class="row">
+                  <div class="col-12">
+                    <h5>Compressor: <span class="badge badge-secondary" id="compPower">N/A</span>
+                      <button type="button" class="btn btn-outline-success btn-sm ml-4" data-toggle="button"
+                        id="compCloseLoop">CloseLoop</button>
+                    </h5>
+                  </div>
+                </div>
               </div>
               <!-- Setting Tab -->
               <div class="tab-pane fade" id="SettingT" role="tabpanel">
