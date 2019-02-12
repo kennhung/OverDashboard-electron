@@ -186,6 +186,16 @@ function setAmpBar(id, val, safe) {
   }
 }
 
+function setONOFF(id, value){
+  if (value) {
+    $("#"+id).html("On");
+    $("#"+id).attr("class", "badge badge-success");
+  } else {
+    $("#"+id).html("Off");
+    $("#"+id).attr("class", "badge badge-danger");
+  }
+}
+
 function setValtBar(id, val) {
   var max = 13.5;
   var min = 0;
