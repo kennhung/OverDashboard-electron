@@ -76,12 +76,6 @@ speedR.setMinValue(-1);
 speedR.animationSpeed = 5;
 speedR.set(0);
 
-var shooterAngle = new Gauge(document.getElementById("shooterAngleGauge")).setOptions(shooterAngleOpt);
-shooterAngle.maxValue = 135;
-shooterAngle.setMinValue(-45);
-shooterAngle.animationSpeed = 5;
-shooterAngle.set(0);
-
 function setPWMBar(id, val) {
   var max = 1.01;
   var min = -1.01;
