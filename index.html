@@ -73,16 +73,14 @@
               <div class="tab-pane fade show active" id="MainT" role="tabpanel">
                 <h5 class="card-title">
                   DriveBase
-                  <button type="button" class="btn btn-outline-info btn-sm" data-toggle="button" id="driveRev">Drive
+                  <button type="button" class="btn btn-outline-info btn-sm mr-4" data-toggle="button"
+                    id="driveRev">Drive
                     Reverse</button>
-                  <button type="button" class="btn btn-outline-success btn-sm ml-4" data-toggle="button"
-                    id="autoTarget">Auto
-                    Target</button>
                   <button type="button" class="btn btn-outline-success btn-sm mr-4" data-toggle="button"
-                    id="autoHeading">Auto
-                    Heading</button>
-                  <button type="button" class="btn btn-outline-warning btn-sm" data-toggle="button"
-                    id="upHoldOver">Holding
+                    id="upHoldOver">Shooting Holding
+                    Override</button>
+                  <button type="button" class="btn btn-outline-warning btn-sm" data-toggle="button" id="upHoldOver">Up
+                    Holding
                     Override</button>
                 </h5>
 
@@ -132,34 +130,26 @@
                   </div>
 
                   <div class="col-3 mt-4">
-
-                    Dist to rocket: <span class="badge badge-secondary" id="distRocket">??</span>
-                    <div class="progress">
-                      <div class="progress-bar bg-info" role="progressbar" style="width: 50%" id="distRocketB"></div>
-                    </div>
+                    Target: <span class="badge badge-secondary" id="shooterAngle">N/A</span>
+                    <br>
+                    Current: <span class="badge badge-secondary" id="shooterCurrentAngle">N/A</span><br>
                     Motor Out: <span class="badge badge-secondary" id="angleMotorOut">??</span>
                     <div class="progress">
                       <div class="progress-bar bg-info" role="progressbar" style="width: 50%" id="angleMotorOutB"></div>
                     </div>
                   </div>
-                  <div class="col-3 mt-4">
-
-                    Level: <span class="badge badge-secondary" id="shooterCurrentLevel">N/A</span>
-                    <br>
-                    Target: <span class="badge badge-secondary" id="shooterAngle">N/A</span>
-                    <br>
-                    Current: <span class="badge badge-secondary" id="shooterCurrentAngle">N/A</span>
-
-                  </div>
                   <div class="col-3">
                     <h5 class="card-title">
                       HatchAssembly
                       <span class="badge badge-pill badge-light" id="hatch">Hatch</span>
-                      <span class="badge badge-pill badge-light" id="push">Push</span>
-                    </h5> 
-                    
+                      <span class="badge badge-pill badge-light" id="push">Push</span><br>
+                      <button type="button" class="btn btn-outline-danger btn-sm mt-1" data-toggle="button"
+                      id="hatchOverride">Protection Override</button>
+                    </h5>
+
 
                   </div>
+                  
                 </div>
 
               </div>

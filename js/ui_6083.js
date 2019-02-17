@@ -94,7 +94,7 @@ function setPWMBar(id, val) {
 
 
 function setUpAssBar(id, val) {
-  setBootstrapBar(0, -5800, id, val);
+  setBootstrapBar(0, -45000, id, val);
   if (val > 0) {
     $("#" + id).removeClass("bg-info").addClass("bg-warning");
   } else {
