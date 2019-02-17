@@ -294,10 +294,6 @@ NetworkTables.addKeyListener("/SmartDashboard/shoot/currentRight", function (key
   $("#shootCr").html(value);
 }, true);
 
-NetworkTables.addKeyListener("/SmartDashboard/shoot/outPiston", function (key, value, isNew) {
-  
-}, true);
-
 NetworkTables.addKeyListener("/SmartDashboard/shoot/target", function(key, value, isNew){
   $("#shooterAngle").html(value);
 });
@@ -321,6 +317,7 @@ NetworkTables.addKeyListener("/SmartDashboard/shoot/currentLevel", function(key,
 NetworkTables.addKeyListener("/SmartDashboard/shoot/autoTarget", function (key, value, isNew) {
   setONOFF("autoTarget", value);
 }, true);
+
 $("#autoTarget").click(function () {
   var valKey = "/SmartDashboard/shoot/autoTarget";
   NetworkTables.putValue(valKey, !NetworkTables.getValue(valKey));
@@ -347,12 +344,27 @@ NetworkTables.addKeyListener("/SmartDashboard/shoot/disToRocket", function (key,
 
 //Panel Assembly
 
+NetworkTables.addKeyListener("/SmartDashboard/panel/hatch", function(key, value, isNew){
+  if(value){
+    $("#hatch").addClass("btn-success");
+  } else{
+    $("#hatch").removeClass("btn-success");
+  }
+}, true);
+
+NetworkTables.addKeyListener("/SmartDashboard/panel/push", function(key, value, isNew){
+  if(value){
+    $("#push").addClass("btn-success");
+  } else{
+    $("#push").removeClass("btn-success");
+  }
+}, true);
 
 //Pneumatic Assembly
 
 NetworkTables.addKeyListener("/SmartDashboard/pneumatic/compPower", function(key, value, isNew){
   setONOFF("compPower", value);
-});
+}, true);
 
 NetworkTables.addKeyListener("/SmartDashboard/pneumatic/compCloseLoop", function (key, value, isNew) {
   if (value) {
