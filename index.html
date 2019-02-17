@@ -63,6 +63,9 @@
                 <a class="nav-link" href="#PowerT" role="tab" data-toggle="tab">Power</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="#PneumaticT" role="tab" data-toggle="tab">Pneumatic</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="#SettingT" role="tab" data-toggle="tab">Setting</a>
               </li>
             </ul>
@@ -144,18 +147,29 @@
                       <span class="badge badge-pill badge-light" id="hatch">Hatch</span>
                       <span class="badge badge-pill badge-light" id="push">Push</span><br>
                       <button type="button" class="btn btn-outline-danger btn-sm mt-1" data-toggle="button"
-                      id="hatchOverride">Protection Override</button>
+                        id="hatchOverride">Protection Override</button>
                     </h5>
 
 
                   </div>
-                  
+
                 </div>
 
               </div>
               <!-- Power Tab -->
               <div class="tab-pane fade" id="PowerT" role="tabpanel">
 
+              </div>
+              <!-- Penumatic Tab-->
+              <div class="tab-pane fade" id="PneumaticT" role="tabpanel">
+                <div class="row">
+                  <div class="col-12">
+                    <h5>Compressor: <span class="badge badge-secondary" id="compPower">N/A</span>
+                      <button type="button" class="btn btn-outline-success btn-sm ml-4" data-toggle="button"
+                        id="compCloseLoop">CloseLoop</button>
+                    </h5>
+                  </div>
+                </div>
               </div>
               <!-- Setting Tab -->
               <div class="tab-pane fade" id="SettingT" role="tabpanel">
