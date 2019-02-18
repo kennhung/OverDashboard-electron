@@ -294,46 +294,22 @@ NetworkTables.addKeyListener("/SmartDashboard/shoot/currentRight", function (key
   $("#shootCr").html(value);
 }, true);
 
-NetworkTables.addKeyListener("/SmartDashboard/shoot/target", function(key, value, isNew){
+NetworkTables.addKeyListener("/SmartDashboard/shoot/target", function (key, value, isNew) {
   $("#shooterAngle").html(value);
 });
 
-NetworkTables.addKeyListener("/SmartDashboard/shoot/enc", function(key, value, isNew){
+NetworkTables.addKeyListener("/SmartDashboard/shoot/enc", function (key, value, isNew) {
   $("#shooterCurrentAngle").html(value);
   shooterAngle.set(value);
 });
 
-NetworkTables.addKeyListener("/SmartDashboard/shoot/angleMotorOut", function(key, value, isNew){
+NetworkTables.addKeyListener("/SmartDashboard/shoot/angleMotorOut", function (key, value, isNew) {
   $("#angleMotorOut").html(value);
   setPWMBar("angleMotorOutB", value);
 });
 
-NetworkTables.addKeyListener("/SmartDashboard/shoot/currentLevel", function(key, value, isNew){
+NetworkTables.addKeyListener("/SmartDashboard/shoot/currentLevel", function (key, value, isNew) {
   $("#shooterCurrentLevel").html(value);
-});
-
-// Auto shooting
-
-NetworkTables.addKeyListener("/SmartDashboard/shoot/autoTarget", function (key, value, isNew) {
-  setONOFF("autoTarget", value);
-}, true);
-
-$("#autoTarget").click(function () {
-  var valKey = "/SmartDashboard/shoot/autoTarget";
-  NetworkTables.putValue(valKey, !NetworkTables.getValue(valKey));
-});
-
-NetworkTables.addKeyListener("/SmartDashboard/shoot/autoHeading", function (key, value, isNew) {
-  if (value) {
-    $("#autoHeading").addClass("active");
-  }
-  else {
-    $("#autoHeading").removeClass("active");
-  }
-}, true);
-$("#autoHeading").click(function () {
-  var valKey = "/SmartDashboard/shoot/autoHeading";
-  NetworkTables.putValue(valKey, !NetworkTables.getValue(valKey));
 });
 
 NetworkTables.addKeyListener("/SmartDashboard/shoot/disToRocket", function (key, value, isNew) {
@@ -344,25 +320,38 @@ NetworkTables.addKeyListener("/SmartDashboard/shoot/disToRocket", function (key,
 
 //Panel Assembly
 
-NetworkTables.addKeyListener("/SmartDashboard/panel/hatch", function(key, value, isNew){
-  if(value){
+NetworkTables.addKeyListener("/SmartDashboard/panel/hatch", function (key, value, isNew) {
+  if (value) {
     $("#hatch").addClass("btn-success");
-  } else{
+  } else {
     $("#hatch").removeClass("btn-success");
   }
 }, true);
 
-NetworkTables.addKeyListener("/SmartDashboard/panel/push", function(key, value, isNew){
-  if(value){
+NetworkTables.addKeyListener("/SmartDashboard/panel/push", function (key, value, isNew) {
+  if (value) {
     $("#push").addClass("btn-success");
-  } else{
+  } else {
     $("#push").removeClass("btn-success");
   }
 }, true);
 
+NetworkTables.addKeyListener("/SmartDashboard/panel/protectOverride", function (key, value, isNew) {
+  if (value) {
+    $("#hatchOverride").addClass("active");
+  } else {
+    $("#hatchOverride").removeClass("active")
+  }
+});
+
+$("#hatchOverride").click(function () {
+  var valKey = "/SmartDashboard/panel/protectOverride";
+  NetworkTables.putValue(valKey, !NetworkTables.getValue(valKey));
+});
+
 //Pneumatic Assembly
 
-NetworkTables.addKeyListener("/SmartDashboard/pneumatic/compPower", function(key, value, isNew){
+NetworkTables.addKeyListener("/SmartDashboard/pneumatic/compPower", function (key, value, isNew) {
   setONOFF("compPower", value);
 }, true);
 
