@@ -300,7 +300,6 @@ NetworkTables.addKeyListener("/SmartDashboard/shoot/target", function (key, valu
 
 NetworkTables.addKeyListener("/SmartDashboard/shoot/enc", function (key, value, isNew) {
   $("#shooterCurrentAngle").html(value);
-  shooterAngle.set(value);
 });
 
 NetworkTables.addKeyListener("/SmartDashboard/shoot/angleMotorOut", function (key, value, isNew) {
@@ -383,7 +382,7 @@ $("#compCloseLoop").click(function () {
 
 //Camera
 var cam1URL = "axis-camera1.local";
-var cam2URL = "roborio-6083-frc.local";
+var cam2URL = "10.60.83.2";
 
 $("#cam1Load").click(function () {
   $(this).hide();
