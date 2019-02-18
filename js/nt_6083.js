@@ -308,14 +308,18 @@ NetworkTables.addKeyListener("/SmartDashboard/shoot/angleMotorOut", function (ke
   setPWMBar("angleMotorOutB", value);
 });
 
-NetworkTables.addKeyListener("/SmartDashboard/shoot/currentLevel", function (key, value, isNew) {
-  $("#shooterCurrentLevel").html(value);
+NetworkTables.addKeyListener("/SmartDashboard/shoot/holdingOverride", function (key, value, isNew) {
+  if (value) {
+    $("#shootHoldOver").addClass("active");
+  } else {
+    $("#shootHoldOver").removeClass("active")
+  }
 });
 
-NetworkTables.addKeyListener("/SmartDashboard/shoot/disToRocket", function (key, value, isNew) {
-  $("#distRocket").html(value);
-  setBootstrapBar(300, 0, "distRocketB", value);
-}, true);
+$("#shootHoldOver").click(function () {
+  var valKey = "/SmartDashboard/shoot/holdingOverride";
+  NetworkTables.putValue(valKey, !NetworkTables.getValue(valKey));
+});
 
 
 //Panel Assembly
