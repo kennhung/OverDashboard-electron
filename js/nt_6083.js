@@ -326,17 +326,19 @@ $("#shootHoldOver").click(function () {
 
 NetworkTables.addKeyListener("/SmartDashboard/panel/hatch", function (key, value, isNew) {
   if (value) {
-    $("#hatch").addClass("btn-success");
+    $("#hatch").removeClass("badge-light");
+    $("#hatch").addClass("badge-success");
   } else {
-    $("#hatch").removeClass("btn-success");
+    $("#hatch").removeClass("badge-success");
+    $("#hatch").addClass("badge-light");
   }
 }, true);
 
 NetworkTables.addKeyListener("/SmartDashboard/panel/push", function (key, value, isNew) {
   if (value) {
-    $("#push").addClass("btn-success");
+    $("#push").addClass("badge-success");
   } else {
-    $("#push").removeClass("btn-success");
+    $("#push").removeClass("badge-success");
   }
 }, true);
 
@@ -351,6 +353,11 @@ NetworkTables.addKeyListener("/SmartDashboard/panel/protectOverride", function (
 $("#hatchOverride").click(function () {
   var valKey = "/SmartDashboard/panel/protectOverride";
   NetworkTables.putValue(valKey, !NetworkTables.getValue(valKey));
+});
+
+NetworkTables.addKeyListener("/SmartDashboard/panel/motorOut", function (key, value, isNew){
+  $("#hatchMotor").html(value);
+  setPWMBar("hatchMotorB", value);
 });
 
 //Pneumatic Assembly
