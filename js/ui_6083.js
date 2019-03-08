@@ -76,12 +76,6 @@ speedR.setMinValue(-1);
 speedR.animationSpeed = 5;
 speedR.set(0);
 
-var shooterAngle = new Gauge(document.getElementById("shooterAngleGauge")).setOptions(shooterAngleOpt);
-shooterAngle.maxValue = 135;
-shooterAngle.setMinValue(-45);
-shooterAngle.animationSpeed = 5;
-shooterAngle.set(0);
-
 function setPWMBar(id, val) {
   var max = 1.01;
   var min = -1.01;
@@ -100,7 +94,7 @@ function setPWMBar(id, val) {
 
 
 function setUpAssBar(id, val) {
-  setBootstrapBar(0, -5800, id, val);
+  setBootstrapBar(0, -45000, id, val);
   if (val > 0) {
     $("#" + id).removeClass("bg-info").addClass("bg-warning");
   } else {
@@ -189,6 +183,16 @@ function setAmpBar(id, val, safe) {
     $("#" + id).attr('class', "progress-bar bg-warning");
   } else {
     $("#" + id).attr('class', "progress-bar bg-danger");
+  }
+}
+
+function setONOFF(id, value){
+  if (value) {
+    $("#"+id).html("On");
+    $("#"+id).attr("class", "badge badge-success");
+  } else {
+    $("#"+id).html("Off");
+    $("#"+id).attr("class", "badge badge-danger");
   }
 }
 

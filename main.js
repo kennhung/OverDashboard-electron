@@ -166,6 +166,7 @@ function readPing() {
         client.Update(client.getKeyID("/SmartDashboard/NT/ping"), Math.round(parseFloat(data.avg)));
         console.log(parseFloat(data.avg));
         setTimeout(function(){
+            client.Update(client.getKeyID("/SmartDashboard/NT/ip"), targetHost);
             readPing();
         },5000);
     });

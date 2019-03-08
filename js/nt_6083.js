@@ -294,75 +294,95 @@ NetworkTables.addKeyListener("/SmartDashboard/shoot/currentRight", function (key
   $("#shootCr").html(value);
 }, true);
 
-NetworkTables.addKeyListener("/SmartDashboard/shoot/outPiston", function (key, value, isNew) {
-  if (value) {
-    $("#outPiston").html("On");
-    $("#outPiston").attr("class", "badge badge-successful");
-  } else {
-    $("#outPiston").html("Off");
-    $("#outPiston").attr("class", "badge badge-danger");
-  }
-}, true);
-
-NetworkTables.addKeyListener("/SmartDashboard/shoot/target", function(key, value, isNew){
+NetworkTables.addKeyListener("/SmartDashboard/shoot/target", function (key, value, isNew) {
   $("#shooterAngle").html(value);
 });
 
-NetworkTables.addKeyListener("/SmartDashboard/shoot/enc", function(key, value, isNew){
+NetworkTables.addKeyListener("/SmartDashboard/shoot/enc", function (key, value, isNew) {
   $("#shooterCurrentAngle").html(value);
-  shooterAngle.set(value);
 });
 
-NetworkTables.addKeyListener("/SmartDashboard/shoot/angleMotorOut", function(key, value, isNew){
+NetworkTables.addKeyListener("/SmartDashboard/shoot/angleMotorOut", function (key, value, isNew) {
   $("#angleMotorOut").html(value);
   setPWMBar("angleMotorOutB", value);
 });
 
-NetworkTables.addKeyListener("/SmartDashboard/shoot/currentLevel", function(key, value, isNew){
-  $("#shooterCurrentLevel").html(value);
-});
-
-// Auto shooting
-
-NetworkTables.addKeyListener("/SmartDashboard/shoot/autoTarget", function (key, value, isNew) {
+NetworkTables.addKeyListener("/SmartDashboard/shoot/holdingOverride", function (key, value, isNew) {
   if (value) {
-    $("#autoTarget").addClass("active");
+    $("#shootHoldOver").addClass("active");
+  } else {
+    $("#shootHoldOver").removeClass("active")
   }
-  else {
-    $("#autoTarget").removeClass("active");
-  }
-}, true);
-$("#autoTarget").click(function () {
-  var valKey = "/SmartDashboard/shoot/autoTarget";
-  NetworkTables.putValue(valKey, !NetworkTables.getValue(valKey));
 });
 
-NetworkTables.addKeyListener("/SmartDashboard/shoot/autoHeading", function (key, value, isNew) {
-  if (value) {
-    $("#autoHeading").addClass("active");
-  }
-  else {
-    $("#autoHeading").removeClass("active");
-  }
-}, true);
-$("#autoHeading").click(function () {
-  var valKey = "/SmartDashboard/shoot/autoHeading";
+$("#shootHoldOver").click(function () {
+  var valKey = "/SmartDashboard/shoot/holdingOverride";
   NetworkTables.putValue(valKey, !NetworkTables.getValue(valKey));
-});
-
-NetworkTables.addKeyListener("/SmartDashboard/shoot/disToRocket", function (key, value, isNew) {
-  $("#distRocket").html(value);
-  setBootstrapBar(300, 0, "distRocketB", value);
 });
 
 
 //Panel Assembly
 
+NetworkTables.addKeyListener("/SmartDashboard/panel/hatch", function (key, value, isNew) {
+  if (value) {
+    $("#hatch").removeClass("badge-light");
+    $("#hatch").addClass("badge-success");
+  } else {
+    $("#hatch").removeClass("badge-success");
+    $("#hatch").addClass("badge-light");
+  }
+}, true);
+
+NetworkTables.addKeyListener("/SmartDashboard/panel/push", function (key, value, isNew) {
+  if (value) {
+    $("#push").addClass("badge-success");
+  } else {
+    $("#push").removeClass("badge-success");
+  }
+}, true);
+
+NetworkTables.addKeyListener("/SmartDashboard/panel/protectOverride", function (key, value, isNew) {
+  if (value) {
+    $("#hatchOverride").addClass("active");
+  } else {
+    $("#hatchOverride").removeClass("active")
+  }
+});
+
+$("#hatchOverride").click(function () {
+  var valKey = "/SmartDashboard/panel/protectOverride";
+  NetworkTables.putValue(valKey, !NetworkTables.getValue(valKey));
+});
+
+NetworkTables.addKeyListener("/SmartDashboard/panel/motorOut", function (key, value, isNew){
+  $("#hatchMotor").html(value);
+  setPWMBar("hatchMotorB", value);
+});
+
+//Pneumatic Assembly
+
+NetworkTables.addKeyListener("/SmartDashboard/pneumatic/compPower", function (key, value, isNew) {
+  setONOFF("compPower", value);
+}, true);
+
+NetworkTables.addKeyListener("/SmartDashboard/pneumatic/compCloseLoop", function (key, value, isNew) {
+  if (value) {
+    $("#compCloseLoop").addClass("active");
+  }
+  else {
+    $("#compCloseLoop").removeClass("active");
+  }
+}, true);
+
+$("#compCloseLoop").click(function () {
+  var valKey = "/SmartDashboard/pneumatic/compCloseLoop";
+  NetworkTables.putValue(valKey, !NetworkTables.getValue(valKey));
+});
 
 
 //Camera
 var cam1URL = "axis-camera1.local";
-var cam2URL = "axis-camera2.local";
+var cam2URL = "10.60.83.2";
 
 $("#cam1Load").click(function () {
   $(this).hide();
@@ -383,10 +403,10 @@ $("#cam2Load").click(function () {
   $(this).hide();
   loadCameraOnConnect({
     container: '#cam2',
-    port: 80,
+    port: 1181,
     host: cam2URL,
-    image_url: '/mjpg/video.mjpg',
-    data_url: '/css/common.css',
+    image_url: '/stream.mjpg',
+    data_url: '/settings.json',
     attrs: {
       width: 320,
       height: 240

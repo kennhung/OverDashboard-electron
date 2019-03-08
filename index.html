@@ -15,7 +15,8 @@
           <div class="card-body">
             <div class="row">
               <div class="col-2">
-                <h5 class="mb-0">Robot: <span class="badge badge-pill badge-danger" id="com-stat">No Connection</span></h5>
+                <h5 class="mb-0">Robot: <span class="badge badge-pill badge-danger" id="com-stat">No Connection</span>
+                </h5>
                 <h5 class="mb-0">Mode: <span class="badge badge-pill badge-danger" id="mode-stat">N/A</span></h5>
               </div>
               <div class="col-3">
@@ -59,7 +60,13 @@
                 <a class="nav-link active" href="#MainT" role="tab" data-toggle="tab">Main</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="#AssistantT" role="tab" data-toggle="tab">Assistant</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="#PowerT" role="tab" data-toggle="tab">Power</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#PneumaticT" role="tab" data-toggle="tab">Pneumatic</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#SettingT" role="tab" data-toggle="tab">Setting</a>
@@ -72,25 +79,26 @@
               <div class="tab-pane fade show active" id="MainT" role="tabpanel">
                 <h5 class="card-title">
                   DriveBase
-                  <button type="button" class="btn btn-outline-info btn-sm" data-toggle="button" id="driveRev">Drive
+                  <button type="button" class="btn btn-outline-danger btn-sm mr-4" data-toggle="button"
+                    id="driveRev">Drive
                     Reverse</button>
-                  <button type="button" class="btn btn-outline-success btn-sm ml-4" data-toggle="button" id="autoTarget">Auto
-                    Target</button>
-                  <button type="button" class="btn btn-outline-success btn-sm mr-4" data-toggle="button" id="autoHeading">Auto
-                    Heading</button>
-                  <button type="button" class="btn btn-outline-warning btn-sm" data-toggle="button" id="upHoldOver">Holding
+                  <button type="button" class="btn btn-outline-success btn-sm mr-4" data-toggle="button"
+                    id="shootHoldOver">Shooting Holding
+                    Override</button>
+                  <button type="button" class="btn btn-outline-warning btn-sm" data-toggle="button" id="upHoldOver">Up
+                    Holding
                     Override</button>
                 </h5>
 
                 <div class="row">
                   <div class="col-4">
-                    <h5>Left: <span class="badge badge-secondary mr-2" id="speedL">??</span> LeftEnc: <span class="badge badge-danger"
-                        id="lEnc">??</span></h5>
+                    <h5>Left: <span class="badge badge-secondary mr-2" id="speedL">??</span> LeftEnc: <span
+                        class="badge badge-danger" id="lEnc">??</span></h5>
                     <canvas id="speedLCan"></canvas>
                   </div>
                   <div class="col-5">
-                    <h5>Right: <span class="badge badge-secondary mr-2" id="speedR">??</span> RightEnc: <span class="badge badge-danger"
-                        id="rEnc">??</span></h5>
+                    <h5>Right: <span class="badge badge-secondary mr-2" id="speedR">??</span> RightEnc: <span
+                        class="badge badge-danger" id="rEnc">??</span></h5>
                     <canvas id="speedRCan"></canvas>
                   </div>
                   <div class="col-3">
@@ -107,16 +115,16 @@
                     </div>
                     Up Motor Out: <span class="badge badge-secondary" id="upOut">??</span>
                     <div class="progress">
-                      <div class="progress-bar bg-info progress-bar-striped" role="progressbar" style="width: 50%" id="upOutB"></div>
+                      <div class="progress-bar bg-info progress-bar-striped" role="progressbar" style="width: 50%"
+                        id="upOutB"></div>
                     </div>
 
                   </div>
                 </div>
-                <h5 class="card-title">
-                  ShootingAssembly
-                </h5>
+
                 <div class="row">
                   <div class="col-3">
+                    <h5>ShootAssembly</h5>
                     Left Claw: <span class="badge badge-secondary" id="shootCl">??</span>
                     <div class="progress">
                       <div class="progress-bar bg-info" role="progressbar" style="width: 50%" id="shootClB"></div>
@@ -126,107 +134,150 @@
                       <div class="progress-bar bg-info" role="progressbar" style="width: 50%" id="shootCrB"></div>
                     </div>
                   </div>
-                  <div class="col-5">
-                    <div style="margin-top: -90px;"><canvas width="250" id="shooterAngleGauge"></canvas></div>
+
+                  <div class="col-3 mt-4">
                     Target: <span class="badge badge-secondary" id="shooterAngle">N/A</span>
-                    Current: <span class="badge badge-secondary" id="shooterCurrentAngle">N/A</span>
-                    Level: <span class="badge badge-secondary" id="shooterCurrentLevel">N/A</span>
-                  </div>
-                  <div class="col-4">
-                    <div class="mb-1">
-                      OutPiston: <span class="badge badge-secondary" id="outPiston">N/A</span>
-                    </div>
-                    Dist to rocket: <span class="badge badge-secondary" id="distRocket">??</span>
-                    <div class="progress">
-                      <div class="progress-bar bg-info" role="progressbar" style="width: 50%" id="distRocketB"></div>
-                    </div>
-                    Shoot Motor Out: <span class="badge badge-secondary" id="angleMotorOut">??</span>
+                    <br>
+                    Current: <span class="badge badge-secondary" id="shooterCurrentAngle">N/A</span><br>
+                    Motor Out: <span class="badge badge-secondary" id="angleMotorOut">??</span>
                     <div class="progress">
                       <div class="progress-bar bg-info" role="progressbar" style="width: 50%" id="angleMotorOutB"></div>
                     </div>
                   </div>
+                  <div class="col-3">
+                    <h5 class="card-title">
+                      HatchAssembly</h5>
+                    <button type="button" class="btn btn-outline-danger btn-sm mb-1" data-toggle="button"
+                      id="hatchOverride">Protect Override</button>
+                    Motor Out: <span class="badge badge-secondary" id="hatchMotor">??</span>
+                    <div class="progress">
+                      <div class="progress-bar bg-info" role="progressbar" style="width: 50%" id="hatchMotorB"></div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <h2><span class="badge badge-light">Hatch</span>
+                    </h2>
+                  </div>
                 </div>
-
               </div>
               <!-- Power Tab -->
               <div class="tab-pane fade" id="PowerT" role="tabpanel">
 
               </div>
-              <!-- Setting Tab -->
-              <div class="tab-pane fade" id="SettingT" role="tabpanel">
-                <h5>Delay before Auto Start(sec)</h5>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">AutoDelay(sec)</span>
+              <div class="tab-pane fade" id="AssistantT" role="tabpanel">
+                <div class="row">
+                  <div class="col-3">
+                    <h5 class="text-left">Left Rocket</h5>
+                    <div class="btn-group-vertical btn-group-lg">
+                      <button type="button" class="btn btn-outline-dark" id="lrocket1">1</button>
+                      <button type="button" class="btn btn-outline-dark" id="lrocket2">2</button>
+                      <button type=" button" class="btn btn-outline-dark" id="lrocket3">3</button>
+                    </div>
                   </div>
-                  <input type="text" class="form-control" id="autoDelay">
-                  <div class="valid-tooltip">OK</div>
-                  <div class="invalid-tooltip">Please input Number</div>
+                  <div class=" col-6 text-center">
+                        <h5 class="text-center">Cargo Ship</h5>
+                        <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+                          <button type="button" class="btn btn-outline-secondary" id="cargoshipL">Left</button>
+                          <button type="button" class="btn btn-outline-secondary" id="cargoshipM">Middle</button>
+                          <button type="button" class="btn btn-outline-secondary" id="cargoshipR">Right</button>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                      <h5 class="text-right">Right Rocket</h5>
+                      <div class="btn-group-vertical btn-group-lg float-right">
+                        <button type="button" class="btn btn-outline-secondary" id="Rrocket1">1</button>
+                        <button type="button" class="btn btn-outline-secondary" id="Rrocket2">2</button>
+                        <button type="button" class="btn btn-outline-secondary" id="Rrocket3">3</button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+                <!-- Penumatic Tab-->
+                <div class="tab-pane fade" id="PneumaticT" role="tabpanel">
+                  <div class="row">
+                    <div class="col-12">
+                      <h5>Compressor: <span class="badge badge-secondary" id="compPower">N/A</span>
+                        <button type="button" class="btn btn-outline-success btn-sm ml-4" data-toggle="button"
+                          id="compCloseLoop">CloseLoop</button>
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+                <!-- Setting Tab -->
+                <div class="tab-pane fade" id="SettingT" role="tabpanel">
+                  <h5>Delay before Auto Start(sec)</h5>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">AutoDelay(sec)</span>
+                    </div>
+                    <input type="text" class="form-control" id="autoDelay">
+                    <div class="valid-tooltip">OK</div>
+                    <div class="invalid-tooltip">Please input Number</div>
+                  </div>
 
-                <h5>Auto Choice</h5>
-                <select id="autoChoice"></select>
+                  <h5>Auto Choice</h5>
+                  <select id="autoChoice"></select>
 
-                <h5>Station</h5>
-                <select id="autoStation"></select>
+                  <h5>Station</h5>
+                  <select id="autoStation"></select>
 
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">
-              Camera1
-              <small>axis-camera1.local</small>
-            </h5>
-            <button type="button" class="btn btn-primary btn-lg" id="cam1Load">Load Cam1</button>
-            <div id="cam1"></div>
-            <h5 class="card-title">
-              Camera2
-              <small>axis-camera2.local</small>
-            </h5>
-            <button type="button" class="btn btn-primary btn-lg" id="cam2Load">Load Cam2</button>
-            <div id="cam2"></div>
+        <div class="col-lg-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">
+                Camera1
+                <small>axis-camera1.local</small>
+              </h5>
+              <button type="button" class="btn btn-primary btn-lg" id="cam1Load">Load Cam1</button>
+              <div id="cam1"></div>
+              <h5 class="card-title">
+                Camera2
+                <small>axis-camera2.local</small>
+              </h5>
+              <button type="button" class="btn btn-primary btn-lg" id="cam2Load">Load Cam2</button>
+              <div id="cam2"></div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg-2">
-        <div class="card">
-          <div class="card-body">
-            <span id="autoConfig">N/A</span>
-            <h4>
-              CurrentStep:
-              <span class="badge badge-primary" id="autoStage">N/A</span>
-            </h4>
-            <h6>Timer: <span class="badge badge-secondary" id="autoTimer">N/A</span></h6>
+        <div class="col-lg-2">
+          <div class="card">
+            <div class="card-body">
+              <span id="autoConfig">N/A</span>
+              <h4>
+                CurrentStep:
+                <span class="badge badge-primary" id="autoStage">N/A</span>
+              </h4>
+              <h6>Timer: <span class="badge badge-secondary" id="autoTimer">N/A</span></h6>
 
-            <h5 class="card-title">Orientation
+              <h5 class="card-title">Orientation
 
-              <span class="badge badge-secondary" id="compass">??</span></h5>
-            <canvas id="compassC"></canvas>
+                <span class="badge badge-secondary" id="compass">??</span></h5>
+              <canvas id="compassC"></canvas>
 
-            <h6>
-              Target Angle: <span class="badge badge-secondary" id="targetAngle">??</span>
-            </h6>
-            <h6>
-              Error Angle: <span class="badge badge-secondary" id="errAngle">??</span>
-            </h6>
+              <h6>
+                Target Angle: <span class="badge badge-secondary" id="targetAngle">??</span>
+              </h6>
+              <h6>
+                Error Angle: <span class="badge badge-secondary" id="errAngle">??</span>
+              </h6>
+            </div>
           </div>
         </div>
+
+
       </div>
-
-
     </div>
-  </div>
-  <script src="js/renderer.js"></script>
-  <script src="networktables/networktables.js"></script>
-  <script src="networktables/camera.js"></script>
-  <script src="networktables/utils.js"></script>
-  <script src="js/ui_6083.js"></script>
-  <script src="js/nt_6083.js"></script>
+    <script src="js/renderer.js"></script>
+    <script src="networktables/networktables.js"></script>
+    <script src="networktables/camera.js"></script>
+    <script src="networktables/utils.js"></script>
+    <script src="js/ui_6083.js"></script>
+    <script src="js/nt_6083.js"></script>
 </body>
 
 </html>
