@@ -64,6 +64,8 @@ NetworkTables.addRobotConnectionListener(function (connected) {
   updateCommStat();
 }, true);
 
+updateCommStat(); 
+
 // Init ping and ip field.
 NetworkTables.putValue("/SmartDashboard/NT/ping", -1);
 NetworkTables.putValue("/SmartDashboard/NT/ip", "noConnect");
@@ -381,35 +383,20 @@ $("#compCloseLoop").click(function () {
 
 
 //Camera
-var cam1URL = "axis-camera1.local";
+var cam1URL = "10.14.56.2";
 var cam2URL = "10.60.83.2";
 
 $("#cam1Load").click(function () {
   $(this).hide();
   loadCameraOnConnect({
     container: '#cam1',
-    port: 80,
-    host: cam1URL,
-    image_url: '/mjpg/video.mjpg',
-    data_url: '/css/common.css',
-    attrs: {
-      width: 320,
-      height: 240
-    }
-  });
-});
-
-$("#cam2Load").click(function () {
-  $(this).hide();
-  loadCameraOnConnect({
-    container: '#cam2',
     port: 1181,
-    host: cam2URL,
+    host: cam1URL,
     image_url: '/stream.mjpg',
     data_url: '/settings.json',
     attrs: {
-      width: 320,
-      height: 240
+      width: 640,
+      height: 480
     }
   });
 });

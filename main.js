@@ -134,7 +134,7 @@ function createWindow() {
 var targetHost = "";
 
 function startNTconnect() {
-    let NtAddress = ["172.22.11.2", "10.60.83.2", "roborio-6083-frc.local", "127.0.0.1"]
+    let NtAddress = ["172.22.11.2", "10.14.56.2", "roborio-1456-frc.local", "127.0.0.1"]
 
     NtAddress.forEach(function (host) {
         tcpp.probe(host, 1735, function (err, available) {
